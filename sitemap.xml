@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>sasidakh.github.io/</loc>
+    <lastmod>2020-05-16T21:23:40+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>sasidakh.github.io/posts/learning-golang/</loc>
+    <lastmod>2020-05-16T21:23:40+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>sasidakh.github.io/posts/</loc>
+    <lastmod>2020-05-16T21:23:40+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>sasidakh.github.io/blog/</loc>
+  </url>
+  
+  <url>
+    <loc>sasidakh.github.io/series/</loc>
+  </url>
+  
+  <url>
+    <loc>sasidakh.github.io/tags/</loc>
+  </url>
+  
+</urlset>
