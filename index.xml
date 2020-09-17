@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Why Currying</title>
+      <link>https://sasidakh.github.io/posts/why-curry/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/posts/why-curry/</guid>
+      <description>Currying is the transformation of function written like this const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7    Into this const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7    Which allows me to do this. const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b; add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</description>
+    </item>
+    
+    <item>
       <title>Go. Weird And Awesome.</title>
       <link>https://sasidakh.github.io/posts/learning-golang/</link>
       <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>

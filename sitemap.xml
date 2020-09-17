@@ -13,12 +13,17 @@
   </url>
   
   <url>
-    <loc>https://sasidakh.github.io/posts/learning-golang/</loc>
-    <lastmod>2020-05-16T21:23:40+05:30</lastmod>
+    <loc>https://sasidakh.github.io/posts/</loc>
+    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://sasidakh.github.io/posts/</loc>
+    <loc>https://sasidakh.github.io/posts/why-curry/</loc>
+    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sasidakh.github.io/posts/learning-golang/</loc>
     <lastmod>2020-05-16T21:23:40+05:30</lastmod>
   </url>
   
