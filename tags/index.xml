@@ -6,9 +6,100 @@
     <description>Recent content in Tags on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
     
 	<atom:link href="https://sasidakh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>currying</title>
+      <link>https://sasidakh.github.io/tags/currying/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/currying/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functionalprogramming</title>
+      <link>https://sasidakh.github.io/tags/functionalprogramming/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/functionalprogramming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://sasidakh.github.io/tags/javascript/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>js</title>
+      <link>https://sasidakh.github.io/tags/js/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lambda</title>
+      <link>https://sasidakh.github.io/tags/lambda/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>basicprogramming</title>
+      <link>https://sasidakh.github.io/tags/basicprogramming/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/basicprogramming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>experience</title>
+      <link>https://sasidakh.github.io/tags/experience/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://sasidakh.github.io/tags/go/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://sasidakh.github.io/tags/golang/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opinion</title>
+      <link>https://sasidakh.github.io/tags/opinion/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://sasidakh.github.io/tags/opinion/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

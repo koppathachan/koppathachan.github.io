@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
 <meta name="description" content="Currying is the transformation of a function written like this const add = (a, b) =&amp;gt; a&#43;b; add(3, 4) // = 7    Into this const add = a =&amp;gt; b =&amp;gt; a&#43;b; add(3)(4) // = 7    Which allows me to do this. const add = a =&amp;gt; b =&amp;gt; a&#43;b; const add3 = add(3); // this can be read as 3 &#43; b; add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input." />
-<meta name="keywords" content="" />
+<meta name="keywords" content=", currying, functionalprogramming, js, javascript, lambda" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://sasidakh.github.io/posts/why-curry/" />
@@ -41,7 +41,7 @@
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="currying,functionalprogramming,js,javascript,lambda," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://sasidakh.github.io"/>
 
@@ -50,16 +50,9 @@
 
 
 
-    <meta property="og:title" content="Why Currying" />
-<meta property="og:description" content="Currying is the transformation of a function written like this const add = (a, b) =&gt; a&#43;b; add(3, 4) // = 7    Into this const add = a =&gt; b =&gt; a&#43;b; add(3)(4) // = 7    Which allows me to do this. const add = a =&gt; b =&gt; a&#43;b; const add3 = add(3); // this can be read as 3 &#43; b; add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://sasidakh.github.io/posts/why-curry/" />
-<meta property="og:image" content="https://sasidakh.github.io"/>
-<meta property="article:published_time" content="2020-09-16T21:07:46+05:30" />
-<meta property="article:modified_time" content="2020-09-16T21:07:46+05:30" /><meta property="og:site_name" content="Akhil Sasidharan" />
 
 
-
+    <meta property="article:section" content="Programming" />
 
 
 
@@ -237,7 +230,25 @@ In conclusion, currying if used properly makes code really readable and can prod
 
     <div class="post-info">
       
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://sasidakh.github.io/tags/currying/">currying</a></span>
+        <span class="tag"><a href="https://sasidakh.github.io/tags/functionalprogramming/">functionalprogramming</a></span>
+        <span class="tag"><a href="https://sasidakh.github.io/tags/js/">js</a></span>
+        <span class="tag"><a href="https://sasidakh.github.io/tags/javascript/">javascript</a></span>
+        <span class="tag"><a href="https://sasidakh.github.io/tags/lambda/">lambda</a></span>
+        
+    </p>
+
       
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://sasidakh.github.io/categories/programming/">Programming</a></span>
+        
+    </p>
+
 
       <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">

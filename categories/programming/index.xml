@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Akhil Sasidharan</title>
-    <link>https://sasidakh.github.io/</link>
-    <description>Recent content on Akhil Sasidharan</description>
+    <title>Programming on Akhil Sasidharan</title>
+    <link>https://sasidakh.github.io/categories/programming/</link>
+    <description>Recent content in Programming on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Sep 2020 17:19:21 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
     
-	<atom:link href="https://sasidakh.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sasidakh.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Work</title>
-      <link>https://sasidakh.github.io/work/</link>
-      <pubDate>Fri, 18 Sep 2020 17:19:21 +0530</pubDate>
-      
-      <guid>https://sasidakh.github.io/work/</guid>
-      <description>Technical Lead, In Time Tec Visionsoft Pvt Ltd.  Senior Software Engineer, In Time Tec Visionsoft Pvt Ltd   Project Cartos: A fleet visualisation and optimisation tool. Primary used in the MPS domain for managing printers on a floor. Users can upload a floor map and plot assets. Assets are imported via csv and can be dragged and dropped onto the floor and visualise the entire fleet. Users can generate multiple reports and export the designed floor.</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://sasidakh.github.io/about/</link>
-      <pubDate>Thu, 17 Sep 2020 00:25:58 +0530</pubDate>
-      
-      <guid>https://sasidakh.github.io/about/</guid>
-      <description> Hello, I am Akhil Sasidharan. I like to code. Thankfully I also get paid to code. </description>
-    </item>
     
     <item>
       <title>Why Currying</title>
