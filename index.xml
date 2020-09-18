@@ -6,19 +6,10 @@
     <description>Recent content on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Sep 2020 17:19:21 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2020 00:25:58 +0530</lastBuildDate>
     
 	<atom:link href="https://akhilsasidharan.in/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Work</title>
-      <link>https://akhilsasidharan.in/work/</link>
-      <pubDate>Fri, 18 Sep 2020 17:19:21 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/work/</guid>
-      <description>Technical Lead, In Time Tec Visionsoft Pvt Ltd.  Senior Software Engineer, In Time Tec Visionsoft Pvt Ltd   Project Cartos: A fleet visualisation and optimisation tool. Primary used in the MPS domain for managing printers on a floor. Users can upload a floor map and plot assets. Assets are imported via csv and can be dragged and dropped onto the floor and visualise the entire fleet. Users can generate multiple reports and export the designed floor.</description>
-    </item>
     
     <item>
       <title>About</title>
@@ -35,7 +26,7 @@
       <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/posts/why-curry/</guid>
-      <description>Currying is the transformation of a function written like this const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7    Into this const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7    Which allows me to do this. const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b; add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</description>
+      <description>Currying is the transformation of a function written like this const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7    Into this const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7    Which allows me to do this. const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</description>
     </item>
     
     <item>
