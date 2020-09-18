@@ -14,7 +14,7 @@
             <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
             
             <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
-            <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.  The mathematical definition of function is &amp;#39;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;#39;.</description>
+            <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.  The mathematical definition of a function is &amp;#39;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;#39;.</description>
             <content type="html"><![CDATA[<p>
 I’ve been going through some functional programming concepts because
 I’m on a quest to write better code, and someone told me functional
@@ -23,7 +23,7 @@ and found out that it was based on lambda calculus and was even more
 intrigued because it said “calculus”.
 </p>
 <p>
-The mathematical definition of function is &#39;a relationship between two
+The mathematical definition of a function is &#39;a relationship between two
 sets of values such that every element in the first set has a unique
 value in the second set&#39;.
 </p>
@@ -66,7 +66,7 @@ These functions are called <strong>pure functions</strong> in computer science. 
 pure function is a function where the return value is determined by
 only its input values without any observable <strong>side effects</strong>. If you
 look at the second example above cos(x) will always return the same
-value for a given x.
+value for a given x. For example.
 </p>
 <div class="src src-js">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span><span style="color:#f92672">+</span><span style="color:#a6e22e">b</span>;
@@ -92,10 +92,10 @@ speed up expensive function evaluations.
 </p>
 <p>
 In maths a variable x once assigned a value does not change. That is
-to say that when a variable x = 1 it cannot be reassigned to x = 3 or
+to say that when a variable x = 1, it cannot be reassigned to x = 3 or
 we cannot mutate x to be ++x. Such an expression would be absurd to a
-mathematician. We follow the same in functional programming and it is
-called <strong>immutability</strong>.
+mathematician. We follow the same rule in functional programming and
+it is called <strong>immutability</strong>.
 </p>
 <div class="src src-js">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">param1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span> };
