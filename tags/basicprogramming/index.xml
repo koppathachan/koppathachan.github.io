@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>basicprogramming on Akhil Sasidharan</title>
-    <link>https://sasidakh.github.io/tags/basicprogramming/</link>
+    <link>https://akhilsasidharan.in/tags/basicprogramming/</link>
     <description>Recent content in basicprogramming on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 May 2020 21:23:40 +0530</lastBuildDate>
     
-	<atom:link href="https://sasidakh.github.io/tags/basicprogramming/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://akhilsasidharan.in/tags/basicprogramming/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Go. Weird And Awesome.</title>
-      <link>https://sasidakh.github.io/posts/learning-golang/</link>
+      <link>https://akhilsasidharan.in/posts/learning-golang/</link>
       <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
       
-      <guid>https://sasidakh.github.io/posts/learning-golang/</guid>
+      <guid>https://akhilsasidharan.in/posts/learning-golang/</guid>
       <description>November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.</description>
     </item>
     
