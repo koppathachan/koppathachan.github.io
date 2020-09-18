@@ -5,8 +5,177 @@
         <description>Recent content in Posts on Akhil Sasidharan</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
+        <lastBuildDate>Fri, 18 Sep 2020 19:13:28 +0530</lastBuildDate>
         <atom:link href="https://akhilsasidharan.in/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Functional Programming</title>
+            <link>https://akhilsasidharan.in/posts/functional-programming/</link>
+            <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
+            
+            <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
+            <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.  The mathematical definition of function is &amp;#39;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;#39;.</description>
+            <content type="html"><![CDATA[<p>
+I’ve been going through some functional programming concepts because
+I’m on a quest to write better code, and someone told me functional
+programming is the way to go. I was intrigued and so, I read about it
+and found out that it was based on lambda calculus and was even more
+intrigued because it said “calculus”.
+</p>
+<p>
+The mathematical definition of function is &#39;a relationship between two
+sets of values such that every element in the first set has a unique
+value in the second set&#39;.
+</p>
+<p>
+Examples:
+</p>
+<ul>
+<li>
+<p>
+f(x) = x^2 + 1
+</p>
+</li>
+<li>
+<p>
+f(x) = cos(x)
+</p>
+</li>
+<li>
+<p>
+f(x) = mother of x
+</p>
+</li>
+<li>
+<p>
+f(x) = xx
+</p>
+</li>
+<li>
+<p>
+f(x) ={ |x| | x ∈ N }, where N is the set of natural numbers.
+</p>
+</li>
+</ul>
+<p>
+The values of x makes the first set and the evaluated values makes the
+second set.
+</p>
+<p>
+These functions are called <strong>pure functions</strong> in computer science. A
+pure function is a function where the return value is determined by
+only its input values without any observable <strong>side effects</strong>. If you
+look at the second example above cos(x) will always return the same
+value for a given x.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span><span style="color:#f92672">+</span><span style="color:#a6e22e">b</span>;
+  <span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>) <span style="color:#75715e">// = 7
+</span></code></pre></div>
+</div>
+<p>
+Same function with a side effect.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`adding </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">a</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> and </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">b</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.`</span>); <span style="color:#75715e">// this is a side effect.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span><span style="color:#f92672">+</span><span style="color:#a6e22e">b</span>;
+  }
+  <span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>) <span style="color:#75715e">// = 7
+</span></code></pre></div>
+</div>
+<p>
+Pure functions are very useful in a special kind of optimisation
+called <strong>memoization</strong>. Since for a given value x the value of f(x) will
+always remain the same it can be saved for future evaluations and can
+speed up expensive function evaluations.
+</p>
+<p>
+In maths a variable x once assigned a value does not change. That is
+to say that when a variable x = 1 it cannot be reassigned to x = 3 or
+we cannot mutate x to be ++x. Such an expression would be absurd to a
+mathematician. We follow the same in functional programming and it is
+called <strong>immutability</strong>.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">param1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addParam2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opts</span> =&gt; { 
+    <span style="color:#a6e22e">opts</span>.<span style="color:#a6e22e">param2</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>; 
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">opts</span>;
+  }
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">addParam2</span>(<span style="color:#a6e22e">options</span>)) <span style="color:#75715e">// { param1: 100, param2: 200 }
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">options</span>) <span style="color:#75715e">// { param1: 100, param2: 200 }
+</span></code></pre></div>
+</div>
+<p>
+In the above snippet addParam2 function changes the options variable so any
+code that uses the options variable after will produce incosistent
+values. Using variables this way will also force us to keep track of
+all the changes to variables, which is a terrible debugging nightmare.
+</p>
+<p>
+Instead do this:
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">param1</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span> };
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addParam2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">opts</span> =&gt; ({ <span style="color:#a6e22e">param2</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>, ...<span style="color:#a6e22e">opts</span> });
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">addParam2</span>(<span style="color:#a6e22e">options</span>)) <span style="color:#75715e">// { param1: 100, param2: 200 }
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">options</span>) <span style="color:#75715e">// { param1: 100 }
+</span></code></pre></div>
+</div>
+<p>
+Immutability is important because in an expression such as the following;
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sq</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> =&gt; <span style="color:#a6e22e">x</span> <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">equation</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> =&gt; <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">sq</span>(<span style="color:#a6e22e">x</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span> <span style="color:#75715e">// ax^2 + bx + c
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">equation</span>(<span style="color:#ae81ff">5</span>); <span style="color:#75715e">// = 106
+</span></code></pre></div>
+</div>
+<p>
+If we replace equation(5) with its value 106 it does not change the
+behaviour of the program in anyway. Such expressions are said to be
+<strong>referentially transparent</strong>.
+</p>
+<p>
+In functional programming paradigm functions are first-class which
+means they are treated like any other variable. They can be passed to
+a function or returned from a function. Such functions are called
+<strong>Higher-Order functions</strong>.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">makeAdjectifier</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">adjective</span> =&gt; <span style="color:#a6e22e">noun</span> =&gt; <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">adjective</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">noun</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">coolifier</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">makeAdjectifier</span>(<span style="color:#e6db74">&#39;cool&#39;</span>);
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">coolifier</span>(<span style="color:#e6db74">&#39;cat&#39;</span>)); <span style="color:#75715e">//cool cat
+</span></code></pre></div>
+</div>
+<p>
+Consider this program to find the sum of a list of numbers.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [ <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">70</span> ];
+  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#a6e22e">i</span>]; <span style="color:#75715e">// we violate the immutability rule here.
+</span><span style="color:#75715e"></span>  }
+</code></pre></div>
+</div>
+<p>
+As you can see we are adding to the variable sum at every iteration
+and mutating the value. Consider this solution using the inbuilt
+reduce function.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [ <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">70</span> ];
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">cur</span>) =&gt; <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">curr</span>, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">//higher-order
+</span><span style="color:#75715e"></span>						       <span style="color:#75715e">//reduce function
+</span></code></pre></div>
+</div>
+<p>
+Higher-order functions are essential to writing correct functional code.
+</p>
+]]></content>
+        </item>
         
         <item>
             <title>Why Currying</title>

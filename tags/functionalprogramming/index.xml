@@ -6,10 +6,19 @@
     <description>Recent content in functionalprogramming on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 19:13:28 +0530</lastBuildDate>
     
 	<atom:link href="https://akhilsasidharan.in/tags/functionalprogramming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Functional Programming</title>
+      <link>https://akhilsasidharan.in/posts/functional-programming/</link>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
+      <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.  The mathematical definition of function is &amp;#39;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;#39;.</description>
+    </item>
     
     <item>
       <title>Why Currying</title>

@@ -3,6 +3,56 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://akhilsasidharan.in/categories/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/posts/functional-programming/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/functionalprogramming/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/javascript/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/js/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/lambda/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/lambdacalculus/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/posts/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/categories/programming/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/tags/</loc>
+    <lastmod>2020-09-18T19:13:28+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://akhilsasidharan.in/about/</loc>
     <lastmod>2020-09-17T00:25:58+05:30</lastmod>
   </url>
@@ -13,47 +63,7 @@
   </url>
   
   <url>
-    <loc>https://akhilsasidharan.in/categories/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://akhilsasidharan.in/tags/currying/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/tags/functionalprogramming/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/tags/javascript/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/tags/js/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/tags/lambda/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/posts/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/categories/programming/</loc>
-    <lastmod>2020-09-16T21:07:46+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/tags/</loc>
     <lastmod>2020-09-16T21:07:46+05:30</lastmod>
   </url>
   

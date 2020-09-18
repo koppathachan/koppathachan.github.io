@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>javascript on Akhil Sasidharan</title>
-    <link>https://akhilsasidharan.in/tags/javascript/</link>
-    <description>Recent content in javascript on Akhil Sasidharan</description>
+    <title>lambdacalculus on Akhil Sasidharan</title>
+    <link>https://akhilsasidharan.in/tags/lambdacalculus/</link>
+    <description>Recent content in lambdacalculus on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 18 Sep 2020 19:13:28 +0530</lastBuildDate>
     
-	<atom:link href="https://akhilsasidharan.in/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://akhilsasidharan.in/tags/lambdacalculus/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
       <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.  The mathematical definition of function is &amp;#39;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;#39;.</description>
-    </item>
-    
-    <item>
-      <title>Why Currying</title>
-      <link>https://akhilsasidharan.in/posts/why-curry/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/posts/why-curry/</guid>
-      <description>Currying is the transformation of a function written like this const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7    Into this const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7    Which allows me to do this. const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4    Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</description>
     </item>
     
   </channel>

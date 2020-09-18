@@ -6,24 +6,15 @@
     <description>Recent content in Tags on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2020 19:13:28 +0530</lastBuildDate>
     
 	<atom:link href="https://akhilsasidharan.in/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>currying</title>
-      <link>https://akhilsasidharan.in/tags/currying/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/currying/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>functionalprogramming</title>
       <link>https://akhilsasidharan.in/tags/functionalprogramming/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/functionalprogramming/</guid>
       <description></description>
@@ -32,7 +23,7 @@
     <item>
       <title>javascript</title>
       <link>https://akhilsasidharan.in/tags/javascript/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/javascript/</guid>
       <description></description>
@@ -41,7 +32,7 @@
     <item>
       <title>js</title>
       <link>https://akhilsasidharan.in/tags/js/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/js/</guid>
       <description></description>
@@ -50,9 +41,27 @@
     <item>
       <title>lambda</title>
       <link>https://akhilsasidharan.in/tags/lambda/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lambdacalculus</title>
+      <link>https://akhilsasidharan.in/tags/lambdacalculus/</link>
+      <pubDate>Fri, 18 Sep 2020 19:13:28 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/lambdacalculus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>currying</title>
+      <link>https://akhilsasidharan.in/tags/currying/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/currying/</guid>
       <description></description>
     </item>
     
