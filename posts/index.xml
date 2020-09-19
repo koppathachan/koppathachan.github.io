@@ -65,7 +65,7 @@ second set.
 These functions are called <strong>pure functions</strong> in computer science. A
 pure function is a function where the return value is determined by
 only its input values without any observable <strong>side effects</strong>. If you
-look at the second example above cos(x) will always return the same
+look at the second example above cos(x), will always return the same
 value for a given x. For example.
 </p>
 <div class="src src-js">
@@ -173,6 +173,9 @@ reduce function.
 </div>
 <p>
 Higher-order functions are essential to writing correct functional code.
+</p>
+<p>
+I hope this helps in writing better code.
 </p>
 ]]></content>
         </item>
