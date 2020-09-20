@@ -5,8 +5,229 @@
         <description>Recent content in Posts on Akhil Sasidharan</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 18 Sep 2020 19:13:28 +0530</lastBuildDate>
+        <lastBuildDate>Sun, 20 Sep 2020 23:50:30 +0530</lastBuildDate>
         <atom:link href="https://akhilsasidharan.in/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Memoization</title>
+            <link>https://akhilsasidharan.in/posts/memoizer/</link>
+            <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
+            
+            <guid>https://akhilsasidharan.in/posts/memoizer/</guid>
+            <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the result is fetched from the cache and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization.</description>
+            <content type="html"><![CDATA[<p>
+Memoization is an <strong>optimization technique</strong> used in functional
+programming to speed up execution by storing the results of resource
+expensive function calls. When the function is called again with the
+same input the result is fetched from the cache and returned. This
+is possible in functional programming languages because of the use of
+<strong>pure functions</strong> as discussed in this <a href="https://akhilsasidharan.in/posts/functional-programming/">post</a>. Purely functional
+languages such as Haskell has inbuilt support for
+memoization. However, in languages like javascript using a mutable map
+(object, map, caches) we can implement a memoization.
+</p>
+<p>
+Memoization is especially useful in recursive functions. Writing code
+the functional way makes my code expressive and testable. However, as
+I will demonstrate now, in javascript (and most other impure
+functional languages) recursion is horrendously slow. Recursion is
+essential to functional programming.
+</p>
+<p>
+Let&#39;s look at the <strong>fibonacci series</strong>. The mathematical formula of
+which is,
+</p>
+<p>
+F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>, where F<sub>0</sub> = 0, F<sub>1</sub> = 1
+</p>
+<p>
+or
+</p>
+<p>
+F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>, when n &gt; 1, and
+</p>
+<p>
+F<sub>n</sub> = n, when n &lt;= 1
+</p>
+<p>
+Looking at this equation one can see why recursive function appeals
+here. Look at the analogous js code.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fib</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; <span style="color:#a6e22e">n</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">fib</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">fib</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">n</span>;
+</code></pre></div>
+</div>
+<p>
+To calculate the fibonacci of 40 the above function took more than a
+second. Beyond fibonacci of 50 the output depends on what video I am
+playing on my laptop. The non recursive but super fast code looks like
+this.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">uglyFib</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>) =&gt; {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">c</span>, <span style="color:#a6e22e">i</span>;
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>;
+      <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">n</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+	  <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;  <span style="color:#75715e">// We violate immutability rule here
+</span><span style="color:#75715e"></span>	  <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>;      <span style="color:#75715e">// and here
+</span><span style="color:#75715e"></span>	  <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>;      <span style="color:#75715e">// and here
+</span><span style="color:#75715e"></span>      }
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">b</span>;
+  };
+</code></pre></div>
+</div>
+<p>
+It doesn&#39;t look anything like its mathematical representation. I
+wished it had the charming good looks of its recursive counterpart to
+go with its dashing performance. However, the wish was granted; we
+have memoization.
+</p>
+<p>
+But first let me show you why the recursive version is slow by
+calculating the fibonacci value of 5. fib(5).
+</p>
+<div class="src src-ditaa">
+<pre><code class="language-ditaa" data-lang="ditaa">fib(5)
+|
++--fib(4)
+|  |
+|  +--fib(3)-------------------------------1
+|  |  |                                    |
+|  |  +--fib(2)-----------------1          |    
+|  |  |  |                      |          |
+|  |  |  *--fib(1)              |          |
+|  |  |  |                      |          |
+|  |  |  *--fib(0)              |          |
+|  |  |                         |          |
+|  |  +--fib(1)                 |          |
+|  |                            |          |
+|  +--fib(2)--------------------2          |
+|     |                         |          |  
+|     *--fib(1)                 |          | 
+|     |                         |          |
+|     *--fib(0)                 |          |
++--fib(3)-----------------------|----------2
+|  |                            |
+|  +--fib(2)--------------------3
+|  |  |
+|  |  *--fib(1)
+|  |  |
+|  |  *--fib(1)
+|  |
+|  +--fib(1)</code></pre>
+</div>
+<p>
+From the above tree we can see that fib(3) is called 2 times, fib(2)
+is called 3 times, fib(1) 6 times and fib(0) 2 times. Memoization is
+how we avoid these repeated calls by saving the result the first time
+fib(n) is called. When the result is returned its value is cached in
+an object with the key as the functions input (n in this case). This
+can be reused by subsequent calls to the function with the same input.
+</p>
+<p>
+Let&#39;s look at a basic implementation of memoization.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fibonacci</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span>, <span style="color:#a6e22e">memo</span> <span style="color:#f92672">=</span> {}) {   <span style="color:#75715e">// provide a default object as
+</span><span style="color:#75715e"></span>				       <span style="color:#75715e">// cache.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">memo</span>[<span style="color:#a6e22e">n</span>]) { <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">memo</span>[<span style="color:#a6e22e">n</span>]; }   <span style="color:#75715e">// looking in the cache.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">n</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1</span>) { <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>; }
+    <span style="color:#a6e22e">memo</span>[<span style="color:#a6e22e">n</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">memo</span>) <span style="color:#f92672">+</span> <span style="color:#75715e">// save the result and pass the
+</span><span style="color:#75715e"></span>	      <span style="color:#a6e22e">fibonacci</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">memo</span>);  <span style="color:#75715e">// cache object.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">memo</span>[<span style="color:#a6e22e">n</span>];                    <span style="color:#75715e">// return the result
+</span><span style="color:#75715e"></span>  }
+</code></pre></div>
+</div>
+<p>
+The above implementation not only caches the result of fibonacci(5),
+but also intermediate results of fibonacci(4), fibonacci(3) and all
+the rest of them.
+</p>
+<p>
+Some npm modules like fast-memoize and memoize provide generic
+implementations to memoize any function like this.
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">memoize</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;fast-memoize&#39;</span>)
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fn</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">one</span>, <span style="color:#a6e22e">two</span>, <span style="color:#a6e22e">three</span>) { <span style="color:#75715e">/* ... */</span> }
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">memoized</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">memoize</span>(<span style="color:#a6e22e">fn</span>)
+  <span style="color:#a6e22e">memoized</span>(<span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;bar&#39;</span>)
+  <span style="color:#a6e22e">memoized</span>(<span style="color:#e6db74">&#39;foo&#39;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#39;bar&#39;</span>) <span style="color:#75715e">// Cache hit
+</span></code></pre></div>
+</div>
+<p>
+But they do not cache intermediate results like we saw above in the
+custom implementation. While I do like custom implementations over a
+generic solution for this I attempted a generic solution that caches
+intermediate values. 
+</p>
+<div class="src src-js">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">memoize</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">func</span>, <span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#66d9ef">null</span>)) =&gt; {
+
+  <span style="color:#75715e">// here we do some magic to sanitize body and arguments recieved from
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// the func.toString() call. Then we return a new function as shown
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// below.
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Function(<span style="color:#e6db74">&#39;cache&#39;</span>,
+  <span style="color:#e6db74">`
+</span><span style="color:#e6db74">  return function </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">func</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">args</span><span style="color:#e6db74">}</span><span style="color:#e6db74">) {
+</span><span style="color:#e6db74">    let result = cache[JSON.stringify([</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">args</span><span style="color:#e6db74">}</span><span style="color:#e6db74">])]
+</span><span style="color:#e6db74">    if (result) { return result; }
+</span><span style="color:#e6db74">    result = </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">body</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    cache[JSON.stringify([</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">args</span><span style="color:#e6db74">}</span><span style="color:#e6db74">])] = result;
+</span><span style="color:#e6db74">    return result;
+</span><span style="color:#e6db74">  }
+</span><span style="color:#e6db74">  `</span>)(<span style="color:#a6e22e">cache</span>);
+  };
+</code></pre></div>
+</div>
+<p>
+Not an elegant solution admittedly, but it does the job, given the
+limitations of javascript. You can explore the full code at
+<a href="https://github.com/sasidakh/memoizer.">https://github.com/sasidakh/memoizer.</a>
+</p>
+<p>
+I tested this implementation where the fibonacci of 40 was calculated
+and it was only 4 times slower (the first time it was called) than its
+non recursive counter part as opposed to being nearly 40000 times
+slower.
+</p>
+<table>
+<tbody>
+<tr>
+<td>Without recursion</td>
+<td>:</td>
+<td>:</td>
+<td>x</td>
+</tr>
+<tr>
+<td>With recursion</td>
+<td>:</td>
+<td>:</td>
+<td>~ 39000x slower</td>
+</tr>
+<tr>
+<td>Memoized recursion</td>
+<td>:</td>
+<td>:</td>
+<td>~4x slower</td>
+</tr>
+<tr>
+<td>Memoized recursion ran twice</td>
+<td>:</td>
+<td>:</td>
+<td>~42x faster</td>
+</tr>
+</tbody>
+</table>
+<p>
+<strong>Wo-hoo! My code is faster thanks to memoization</strong>
+</p>
+<p>
+You can run the tests on the <a href="https://github.com/sasidakh/memoizer">repo</a> to understand it better.
+</p>
+]]></content>
+        </item>
         
         <item>
             <title>Functional Programming</title>
