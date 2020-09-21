@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the result is fetched from the cache and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization." />
-<meta name="keywords" content=", functionalprogramming, js, javascript, memoization, memoize, recursion" />
+<meta name="description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization." />
+<meta name="keywords" content=", functionalprogramming, js, javascript, memoization, memoize, recursion, memoizer" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://akhilsasidharan.in/posts/memoizer/" />
@@ -33,20 +33,20 @@
 
 
 <meta itemprop="name" content="Memoization">
-<meta itemprop="description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the result is fetched from the cache and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization.">
+<meta itemprop="description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.">
 <meta itemprop="datePublished" content="2020-09-20T23:50:30&#43;05:30" />
 <meta itemprop="dateModified" content="2020-09-20T23:50:30&#43;05:30" />
-<meta itemprop="wordCount" content="872">
+<meta itemprop="wordCount" content="870">
 <meta itemprop="image" content="https://akhilsasidharan.in"/>
 
 
 
-<meta itemprop="keywords" content="functionalprogramming,js,javascript,memoization,memoize,recursion," />
+<meta itemprop="keywords" content="functionalprogramming,js,javascript,memoization,memoize,recursion,memoizer," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://akhilsasidharan.in"/>
 
 <meta name="twitter:title" content="Memoization"/>
-<meta name="twitter:description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the result is fetched from the cache and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization."/>
+<meta name="twitter:description" content="Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization."/>
 
 
 
@@ -140,12 +140,11 @@
 Memoization is an <strong>optimization technique</strong> used in functional
 programming to speed up execution by storing the results of resource
 expensive function calls. When the function is called again with the
-same input the result is fetched from the cache and returned. This is
-possible in functional programming languages because of the use of
-<strong>pure functions</strong> as discussed in this <a href="https://akhilsasidharan.in/posts/functional-programming/">post</a>. Purely functional
-languages such as Haskell has inbuilt support for memoization. In
-javascript, using a mutable map (object, map, caches) we can implement
-a memoization.
+same input the stored result is fetched and returned. This is possible
+in functional programming languages because of the use of <strong>pure
+functions</strong> as discussed in this <a href="https://akhilsasidharan.in/posts/functional-programming/">post</a>. Purely functional languages such
+as Haskell has inbuilt support for memoization. In javascript, using a
+mutable map (object, map, caches) we can implement a memoization.
 </p>
 <p>
 Memoization is especially useful in recursive functions. Writing code
@@ -364,6 +363,7 @@ You can run the tests on the <a href="https://github.com/sasidakh/memoizer">repo
         <span class="tag"><a href="https://akhilsasidharan.in/tags/memoization/">memoization</a></span>
         <span class="tag"><a href="https://akhilsasidharan.in/tags/memoize/">memoize</a></span>
         <span class="tag"><a href="https://akhilsasidharan.in/tags/recursion/">recursion</a></span>
+        <span class="tag"><a href="https://akhilsasidharan.in/tags/memoizer/">memoizer</a></span>
         
     </p>
 
@@ -384,7 +384,7 @@ You can run the tests on the <a href="https://github.com/sasidakh/memoizer">repo
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        872 Words
+        870 Words
       </p>
 
       <p>
