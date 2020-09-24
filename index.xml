@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Memoization</title>
+      <title>Memoization, with a js implementation that caches recursive calls.</title>
       <link>https://akhilsasidharan.in/posts/memoizer/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
