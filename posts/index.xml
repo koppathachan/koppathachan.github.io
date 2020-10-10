@@ -14,7 +14,7 @@
             <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
             
             <guid>https://akhilsasidharan.in/posts/prefer-native-over-library/</guid>
-            <description>&amp;#39;Brevity is the soul of wit&amp;#39;   We owe shakespeare the credit for this enduring idiom. The context of this quote if often lost in its contemporary usage. I too, am going to ignore it and use it to simply mean intelligence or humour is best expressed briefly. I am also going to extend this quality, &amp;#39;soul of wit&amp;#39;, to programming.  The best thing about free and open source software is that there is a lot of good, clean usefull software to choose from to do anything.</description>
+            <description>&amp;#39;Brevity is the soul of wit&amp;#39;   We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &amp;#39;intelligence or humour is best expressed briefly&amp;#39;. I am also going to extend this quality, &amp;#39;soul of wit&amp;#39;, to programming.  The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.</description>
             <content type="html"><![CDATA[<blockquote>
 <p>
 &#39;Brevity is the soul of wit&#39;
@@ -22,17 +22,17 @@
 </blockquote>
 <p>
 We owe shakespeare the credit for this enduring idiom. The context of
-this quote if often lost in its contemporary usage. I too, am going to
-ignore it and use it to simply mean intelligence or humour is best
-expressed briefly. I am also going to extend this quality, &#39;soul of wit&#39;,
+this quote is often lost in its contemporary usage. I am going to
+ignore it too, and use it to simply mean &#39;intelligence or humour is best
+expressed briefly&#39;. I am also going to extend this quality, &#39;soul of wit&#39;,
 to programming.
 </p>
 <p>
 The best thing about free and open source software is that there is a
-lot of good, clean usefull software to choose from to do anything.
+lot of good, clean useful software to choose from to do anything.
 Consider the JavaScript ecosystem. Trivial computations like calling a
 function multiple times or getting a value from the nested object, or
-delay a function can be done by using generic implementations in
+delaying a function can be done by using generic implementations in
 &#39;lodash&#39; package. Even implementations of native methods like forEach,
 map, filter, find are found (I guess lodash was pre es3) in
 lodash. Coming back to brevity and the soul of wit, I could not bring
@@ -48,8 +48,8 @@ must it.
 </div>
 <p>
 In most cases its input will be an object or an array. That&#39;s readable
-and brief. Why must a function that checks if an object is empty
-recieve say a number. <strong>It is a violation of the Liskov Substitution
+and brief. Why must a function that checks if an object is empty,
+recieve say, a number. <strong>It is a violation of the Liskov Substitution
 Principle aka LSP</strong>.
 </p>
 <p>
@@ -59,7 +59,7 @@ used. Bluebird even performed better than native Promises (before node
 10). However, Bluebird also has other functions like Promise.map,
 which can be easily implemented using array.map and
 async/await. Promise.map also has options like concurrency. But I
-cannot see the rational behind importing a library to use a couple of
+cannot see the rationale behind importing a library to use a couple of
 its features as opposed spending 15 minutes to implement them
 yourself. Here is where that soul of wit is and this habit has made me
 a better programmer. A generic solution is not always the best
