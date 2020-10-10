@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://akhilsasidharan.in/posts/</loc>
+    <lastmod>2020-10-07T03:58:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilsasidharan.in/posts/prefer-native-over-library/</loc>
+    <lastmod>2020-10-07T03:58:43+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://akhilsasidharan.in/categories/</loc>
     <lastmod>2020-09-20T23:50:30+05:30</lastmod>
   </url>
@@ -39,11 +49,6 @@
   
   <url>
     <loc>https://akhilsasidharan.in/tags/memoizer/</loc>
-    <lastmod>2020-09-20T23:50:30+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhilsasidharan.in/posts/</loc>
     <lastmod>2020-09-20T23:50:30+05:30</lastmod>
   </url>
   
