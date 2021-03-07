@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on Akhil Sasidharan</title>
+    <title>Golang on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/tags/golang/</link>
-    <description>Recent content in golang on Akhil Sasidharan</description>
+    <description>Recent content in Golang on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 16 May 2020 21:23:40 +0530</lastBuildDate>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Go. Weird And Awesome.</title>
+      <title>Go. Weird And Awesome</title>
       <link>https://akhilsasidharan.in/posts/learning-golang/</link>
       <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
       

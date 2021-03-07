@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>memoization on Akhil Sasidharan</title>
+    <title>Memoization on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/tags/memoization/</link>
-    <description>Recent content in memoization on Akhil Sasidharan</description>
+    <description>Recent content in Memoization on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Sep 2020 23:50:30 +0530</lastBuildDate>
@@ -12,11 +12,11 @@
     
     
     <item>
-      <title>Memoization, with a js implementation that caches recursive calls.</title>
-      <link>https://akhilsasidharan.in/posts/memoizer/</link>
+      <title>Memoization, with a js implementation that caches recursive calls</title>
+      <link>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/memoizer/</guid>
+      <guid>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</guid>
       <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.</description>
     </item>
     
