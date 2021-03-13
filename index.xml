@@ -19,52 +19,74 @@ This blog is an attempt to document and share what I learn to whoever will liste
     
     <item>
       <title>Go. Weird And Awesome</title>
-      <link>https://akhilsasidharan.in/posts/learning-golang/</link>
+      <link>https://akhilsasidharan.in/tech/learning-golang/</link>
       <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/learning-golang/</guid>
+      <guid>https://akhilsasidharan.in/tech/learning-golang/</guid>
       <description>November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.</description>
     </item>
     
     <item>
+      <title>Spitfire</title>
+      <link>https://akhilsasidharan.in/poems/spitfire/</link>
+      <pubDate>Mon, 09 Mar 2015 00:00:00 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/poems/spitfire/</guid>
+      <description>In a land of misplaced evils
+There dwelt a creature named Spitfire,
+Who was aptly named,
+Did spit fire for
+All the world to see.
+News of this flame
+Had reached across the lands.
+The flame was hot in some lands
+While familiar in others.
+It did melt the ice in some
+Brought new life to ground.
+While in others still,
+It&#39;d burnt weeds in the field.
+This land haply, fierce weeds had bounded</description>
+    </item>
+    
+    <item>
       <title>Why currying?</title>
-      <link>https://akhilsasidharan.in/posts/why-curry/</link>
+      <link>https://akhilsasidharan.in/tech/why-curry/</link>
       <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/why-curry/</guid>
+      <guid>https://akhilsasidharan.in/tech/why-curry/</guid>
       <description>Currying is the transformation of a function written like this
-1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
+ 1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
 Into this
-1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
+ 1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
 Which allows me to do this.
-1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
+ 1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>https://akhilsasidharan.in/posts/functional-programming/</link>
+      <link>https://akhilsasidharan.in/tech/functional-programming/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
+      <guid>https://akhilsasidharan.in/tech/functional-programming/</guid>
       <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.
 The mathematical definition of a function is &amp;lsquo;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;rsquo;.</description>
     </item>
     
     <item>
       <title>Memoization, with a js implementation that caches recursive calls</title>
-      <link>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</link>
+      <link>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</guid>
+      <guid>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</guid>
       <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.</description>
     </item>
     
     <item>
       <title>Why use native Promise over Bluebird and other implementations</title>
-      <link>https://akhilsasidharan.in/posts/prefer-native-over-library/</link>
+      <link>https://akhilsasidharan.in/tech/prefer-native-over-library/</link>
       <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/prefer-native-over-library/</guid>
+      <guid>https://akhilsasidharan.in/tech/prefer-native-over-library/</guid>
       <description>&amp;lsquo;Brevity is the soul of wit&amp;rsquo;
  We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &amp;lsquo;intelligence or humour is best expressed briefly&amp;rsquo;. I am also going to extend this quality, &amp;lsquo;soul of wit&amp;rsquo;, to programming.
 The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.</description>

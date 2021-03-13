@@ -9,34 +9,34 @@
     <lastBuildDate>Sun, 20 Sep 2020 23:50:30 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/functionalprogramming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why currying?</title>
-      <link>https://akhilsasidharan.in/posts/why-curry/</link>
+      <link>https://akhilsasidharan.in/tech/why-curry/</link>
       <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/why-curry/</guid>
+      <guid>https://akhilsasidharan.in/tech/why-curry/</guid>
       <description>Currying is the transformation of a function written like this
-1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
+ 1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
 Into this
-1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
+ 1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
 Which allows me to do this.
-1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
+ 1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
     </item>
     
     <item>
       <title>Functional Programming</title>
-      <link>https://akhilsasidharan.in/posts/functional-programming/</link>
+      <link>https://akhilsasidharan.in/tech/functional-programming/</link>
       <pubDate>Fri, 18 Sep 2020 00:00:00 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/functional-programming/</guid>
+      <guid>https://akhilsasidharan.in/tech/functional-programming/</guid>
       <description>I’ve been going through some functional programming concepts because I’m on a quest to write better code, and someone told me functional programming is the way to go. I was intrigued and so, I read about it and found out that it was based on lambda calculus and was even more intrigued because it said “calculus”.
 The mathematical definition of a function is &amp;lsquo;a relationship between two sets of values such that every element in the first set has a unique value in the second set&amp;rsquo;.</description>
     </item>
     
     <item>
       <title>Memoization, with a js implementation that caches recursive calls</title>
-      <link>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</link>
+      <link>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</guid>
+      <guid>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</guid>
       <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.</description>
     </item>
     

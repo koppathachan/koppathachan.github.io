@@ -8,70 +8,79 @@
     <loc>https://akhilsasidharan.in/about/</loc>
     <lastmod>2021-03-13T22:06:51+05:30</lastmod>
   </url><url>
-    <loc>https://akhilsasidharan.in/posts/learning-golang/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <loc>https://akhilsasidharan.in/tech/learning-golang/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
-    <loc>https://akhilsasidharan.in/posts/why-curry/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <loc>https://akhilsasidharan.in/poems/spitfire/</loc>
+    <lastmod>2021-03-13T23:23:50+05:30</lastmod>
   </url><url>
-    <loc>https://akhilsasidharan.in/posts/functional-programming/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <loc>https://akhilsasidharan.in/tech/why-curry/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
-    <loc>https://akhilsasidharan.in/posts/fast-recursion-using-memoizer/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <loc>https://akhilsasidharan.in/tech/functional-programming/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
-    <loc>https://akhilsasidharan.in/posts/prefer-native-over-library/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <loc>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tech/prefer-native-over-library/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/categories/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/javascript/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/js/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
-  </url><url>
-    <loc>https://akhilsasidharan.in/posts/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/categories/programming/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/programmingbasics/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T23:23:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tech/</loc>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/utilfunctions/</loc>
-    <lastmod>2021-03-07T22:18:53+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/fastrecursion/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/functionalprogramming/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/lambdacalculus/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/memoization/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/memoizer/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/recursion/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/currying/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/go/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/golang/</loc>
-    <lastmod>2021-03-07T22:18:52+05:30</lastmod>
+    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/poems/</loc>
+    <lastmod>2021-03-13T23:23:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/poetry/</loc>
+    <lastmod>2021-03-13T23:23:50+05:30</lastmod>
   </url>
 </urlset>

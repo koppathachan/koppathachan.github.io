@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang=en-us><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Why currying? - Akhil Sasidharan</title>
+    <meta name="description" content="Currying is the transformation of a function written like this
+ 1 2  const add = (a, b) =&gt; a&#43;b; add(3, 4) // = 7   
+Into this
+ 1 2  const add = a =&gt; b =&gt; a&#43;b; add(3)(4) // = 7   
+Which allows me to do this.
+ 1 2 3  const add = a =&gt; b =&gt; a&#43;b; const add3 = add(3); // this can be read as 3 &#43; b;  add3(1) // = 4">
+    <link rel="canonical" href="https://akhilsasidharan.in/tech/why-curry/">
+    <meta property="og:title" content="Why currying?">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://akhilsasidharan.in/tech/why-curry/">
+    <meta property="og:description" content="Currying is the transformation of a function written like this
+ 1 2  const add = (a, b) =&gt; a&#43;b; add(3, 4) // = 7   
+Into this
+ 1 2  const add = a =&gt; b =&gt; a&#43;b; add(3)(4) // = 7   
+Which allows me to do this.
+ 1 2 3  const add = a =&gt; b =&gt; a&#43;b; const add3 = add(3); // this can be read as 3 &#43; b;  add3(1) // = 4">
+    <meta property="og:site_name" content="Akhil Sasidharan">
+    <link rel="stylesheet" href="https://akhilsasidharan.in/css/main.min.effd9c984aaa57853709fcd6e36011a81635b8f0b1df965ab22fb185941ff774.css" integrity="sha256-7/2cmEqqV4U3CfzW42ARqBY1uPCx35Zasi&#43;xhZQf93Q=">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+    
+</head>
+<body><header class="site-header">
+    <nav class="site-nav" role="navigation" aria-label="breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb"><li class="breadcrumb-item  " 
+  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/">
+    <span itemprop="name">~</span>
+  </a>
+  <meta itemprop="position" content="1001" />
+</li>/<li class="breadcrumb-item  " 
+  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/tech/">
+    <span itemprop="name">tech</span>
+  </a>
+  <meta itemprop="position" content="0" />
+</li>/<li class="breadcrumb-item active hidden" aria-current="page"
+  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/tech/why-curry/">
+    <span itemprop="name">why-curry</span>
+  </a>
+  <meta itemprop="position" content="1" />
+</li></ol>
+    </nav>
+    <h1 class="site-title hidden">
+		<a href="https://akhilsasidharan.in">Akhil Sasidharan</a>
+    </h1>
+</header>
+<main id="content">
+<article role="article" class="content post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">        
+        <h2 class="post-title" itemprop="name headline">Why currying?</h2>
+        <span class="post-meta">
+            <time class="date-published" datetime="2020-09-16T21:07:46&#43;07:00" itemprop="datePublished">
+                Wed, 16 Sep 2020
+            </time>
+            
+            <ul id="tags">
+              
+                <li> <a href="https://akhilsasidharan.in/tags/currying">#currying</a> </li>
+              
+                <li> <a href="https://akhilsasidharan.in/tags/functionalprogramming">#functionalprogramming</a> </li>
+              
+                <li> <a href="https://akhilsasidharan.in/tags/lambdacalculus">#lambdacalculus</a> </li>
+              
+                <li> <a href="https://akhilsasidharan.in/tags/javascript">#javascript</a> </li>
+              
+                <li> <a href="https://akhilsasidharan.in/tags/js">#js</a> </li>
+              
+            </ul>
+            
+        </span>
+    </header>
+    <div class="post-content" itemprop="articleBody">
+        <p>Currying is the transformation of a function written like this</p>
+<p><a id="code-snippet--EgCurry"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+  <span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">// = 7
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Into this</p>
+<p><a id="code-snippet--EgCurry"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">a</span> <span class="p">=&gt;</span> <span class="nx">b</span> <span class="p">=&gt;</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+  <span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span> <span class="c1">// = 7
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Which allows me to do this.</p>
+<p><a id="code-snippet--EgCurry"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="nx">a</span> <span class="p">=&gt;</span> <span class="nx">b</span> <span class="p">=&gt;</span> <span class="nx">a</span><span class="o">+</span><span class="nx">b</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">add3</span> <span class="o">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// this can be read as 3 + b;
+</span><span class="c1"></span>  <span class="nx">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// = 4
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</p>
+<p>You can compose functions like these.</p>
+<p><a id="code-snippet--EgCurry2"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">longerThan</span> <span class="o">=</span> <span class="nx">n</span> <span class="p">=&gt;</span> <span class="nx">word</span> <span class="p">=&gt;</span> <span class="nx">word</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">n</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;something&#39;</span><span class="p">,</span> <span class="s1">&#39;schadenfreude&#39;</span><span class="p">,</span> <span class="s1">&#39;ambivalent&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;bad&#39;</span><span class="p">,</span> <span class="s1">&#39;preposterous&#39;</span><span class="p">];</span>
+  <span class="kr">const</span> <span class="nx">find</span> <span class="o">=</span> <span class="nx">words</span> <span class="p">=&gt;</span> <span class="nx">lengthCond</span> <span class="p">=&gt;</span> <span class="nx">words</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">lengthCond</span><span class="p">);</span>
+  <span class="nx">find</span><span class="p">(</span><span class="nx">words</span><span class="p">)(</span><span class="nx">longerThan</span><span class="p">(</span><span class="mi">7</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Now that just reads &lsquo;find words longer than seven&rsquo;.</p>
+<p><a id="code-snippet--EgCurry2"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">greet</span> <span class="o">=</span> <span class="nx">message</span> <span class="p">=&gt;</span> <span class="nx">name</span> <span class="p">=&gt;</span> <span class="sb">`</span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">sayHelloTo</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+  <span class="nx">sayHelloTo</span><span class="p">(</span><span class="s1">&#39;Akhil&#39;</span><span class="p">);</span> <span class="c1">// Hello Akhil!
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">sayWelcomeTo</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;Welcome&#39;</span><span class="p">);</span>
+  <span class="nx">sayWelcomeTo</span><span class="p">(</span><span class="s1">&#39;Mamta&#39;</span><span class="p">);</span> <span class="c1">// Welcome Mamta!
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">sayGoodDayTo</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">(</span><span class="s1">&#39;Good Day&#39;</span><span class="p">);</span>
+  <span class="nx">sayGoodDayTo</span><span class="p">(</span><span class="s1">&#39;Ritika&#39;</span><span class="p">);</span> <span class="c1">// Good Day Ritika!
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>It&rsquo;s easy on the eyes isn&rsquo;t it.</p>
+<p>I especially like this:</p>
+<p><a id="code-snippet--EgCurry3"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="kr">double</span> <span class="o">=</span> <span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kr">const</span> <span class="nx">triple</span> <span class="o">=</span> <span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="c1">// This is a bit tricky to read admittedly, but look what it produces
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">pipe</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">fns</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">n</span> <span class="p">=&gt;</span> <span class="nx">fns</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">f</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">f</span><span class="p">(</span><span class="nx">total</span><span class="p">),</span> <span class="nx">n</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">doubler</span> <span class="o">=</span> <span class="nx">pipe</span><span class="p">(</span><span class="kr">double</span><span class="p">);</span> <span class="c1">// same as double
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">quadrupler</span> <span class="o">=</span> <span class="nx">pipe</span><span class="p">(</span><span class="kr">double</span><span class="p">,</span> <span class="kr">double</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">sextuple</span> <span class="o">=</span> <span class="nx">pipe</span><span class="p">(</span><span class="kr">double</span><span class="p">,</span> <span class="nx">triple</span><span class="p">);</span>
+  <span class="nx">quadrupler</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> <span class="c1">// 12
+</span><span class="c1"></span>  <span class="nx">sextuple</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// 30
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>This is called composition.</p>
+<p>Here&rsquo;s another fun one.</p>
+<p><a id="code-snippet--EgCurry4"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js">  <span class="kr">const</span> <span class="nx">subString</span> <span class="o">=</span> <span class="nx">start</span> <span class="p">=&gt;</span> <span class="nx">len</span> <span class="p">=&gt;</span> <span class="nx">str</span> <span class="p">=&gt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">len</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">lowerCase</span> <span class="o">=</span> <span class="nx">str</span> <span class="p">=&gt;</span> <span class="nx">str</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+  <span class="kr">const</span> <span class="nx">firstCharacter</span> <span class="o">=</span> <span class="nx">str</span> <span class="p">=&gt;</span> <span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">)(</span><span class="mi">1</span><span class="p">)(</span><span class="nx">str</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">firstCharacterAsLower</span> <span class="o">=</span> <span class="nx">str</span> <span class="p">=&gt;</span> <span class="nx">lowerCase</span><span class="p">(</span><span class="nx">firstCharacter</span><span class="p">(</span><span class="nx">str</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div></p>
+<p>In conclusion, currying if used properly makes code really readable and can produce powerful abstractions through compositions and partial application of functions. I will explore partial application examples in my next post.</p>
+
+    </div>
+</article>
+<div class="pagination">
+    
+    <div class="prev"> <a href="https://akhilsasidharan.in/tech/functional-programming/">Previous Post</a> </div>
+    
+    
+    <div class="next"> <a href="https://akhilsasidharan.in/tech/learning-golang/">Next Post</a> </div>
+    
+</div>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "akhilsasidharan-in" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        </main><footer class="site-footer">
+	<span class="left">Built with Hugo and emacs org mode </span> 
+	<span class="right">
+		<em>Akhil Sasidharan</em>
+	</span>
+</footer>
+</body>
+</html>
