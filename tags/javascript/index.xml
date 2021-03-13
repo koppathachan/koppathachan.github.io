@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Javascript on Akhil Sasidharan</title>
+    <title>javascript on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/tags/javascript/</link>
-    <description>Recent content in Javascript on Akhil Sasidharan</description>
+    <description>Recent content in javascript on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
-    
-	<atom:link href="https://akhilsasidharan.in/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why currying?</title>
       <link>https://akhilsasidharan.in/posts/why-curry/</link>
@@ -18,11 +14,11 @@
       
       <guid>https://akhilsasidharan.in/posts/why-curry/</guid>
       <description>Currying is the transformation of a function written like this
- 1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
+1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
 Into this
- 1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
+1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
 Which allows me to do this.
- 1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
+1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
     </item>
     
     <item>

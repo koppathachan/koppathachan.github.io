@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programmingbasics on Akhil Sasidharan</title>
+    <title>programmingbasics on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/tags/programmingbasics/</link>
-    <description>Recent content in Programmingbasics on Akhil Sasidharan</description>
+    <description>Recent content in programmingbasics on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 May 2020 21:23:40 +0530</lastBuildDate>
-    
-	<atom:link href="https://akhilsasidharan.in/tags/programmingbasics/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/programmingbasics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go. Weird And Awesome</title>
       <link>https://akhilsasidharan.in/posts/learning-golang/</link>

@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Utilfunctions on Akhil Sasidharan</title>
+    <title>utilfunctions on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/tags/utilfunctions/</link>
-    <description>Recent content in Utilfunctions on Akhil Sasidharan</description>
+    <description>Recent content in utilfunctions on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate>
-    
-	<atom:link href="https://akhilsasidharan.in/tags/utilfunctions/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/utilfunctions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why use native Promise over Bluebird and other implementations</title>
       <link>https://akhilsasidharan.in/posts/prefer-native-over-library/</link>

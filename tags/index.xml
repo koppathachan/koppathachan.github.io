@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Akhil Sasidharan</title>
@@ -6,22 +6,45 @@
     <description>Recent content in Tags on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Sep 2020 21:07:46 +0530</lastBuildDate>
-    
-	<atom:link href="https://akhilsasidharan.in/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Currying</title>
-      <link>https://akhilsasidharan.in/tags/currying/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <title>javascript</title>
+      <link>https://akhilsasidharan.in/tags/javascript/</link>
+      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/tags/currying/</guid>
+      <guid>https://akhilsasidharan.in/tags/javascript/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Fastrecursion</title>
+      <title>js</title>
+      <link>https://akhilsasidharan.in/tags/js/</link>
+      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programmingbasics</title>
+      <link>https://akhilsasidharan.in/tags/programmingbasics/</link>
+      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/programmingbasics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>utilfunctions</title>
+      <link>https://akhilsasidharan.in/tags/utilfunctions/</link>
+      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/utilfunctions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fastrecursion</title>
       <link>https://akhilsasidharan.in/tags/fastrecursion/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
@@ -30,61 +53,25 @@
     </item>
     
     <item>
-      <title>Functionalprogramming</title>
+      <title>functionalprogramming</title>
       <link>https://akhilsasidharan.in/tags/functionalprogramming/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/functionalprogramming/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Go</title>
-      <link>https://akhilsasidharan.in/tags/go/</link>
-      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>https://akhilsasidharan.in/tags/golang/</link>
-      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
-      <link>https://akhilsasidharan.in/tags/javascript/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/javascript/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Js</title>
-      <link>https://akhilsasidharan.in/tags/js/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lambdacalculus</title>
+      <title>lambdacalculus</title>
       <link>https://akhilsasidharan.in/tags/lambdacalculus/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tags/lambdacalculus/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Memoization</title>
+      <title>memoization</title>
       <link>https://akhilsasidharan.in/tags/memoization/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
@@ -93,7 +80,7 @@
     </item>
     
     <item>
-      <title>Memoizer</title>
+      <title>memoizer</title>
       <link>https://akhilsasidharan.in/tags/memoizer/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
@@ -102,16 +89,7 @@
     </item>
     
     <item>
-      <title>Programmingbasics</title>
-      <link>https://akhilsasidharan.in/tags/programmingbasics/</link>
-      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tags/programmingbasics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Recursion</title>
+      <title>recursion</title>
       <link>https://akhilsasidharan.in/tags/recursion/</link>
       <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
       
@@ -120,11 +98,29 @@
     </item>
     
     <item>
-      <title>Utilfunctions</title>
-      <link>https://akhilsasidharan.in/tags/utilfunctions/</link>
-      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
+      <title>currying</title>
+      <link>https://akhilsasidharan.in/tags/currying/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/tags/utilfunctions/</guid>
+      <guid>https://akhilsasidharan.in/tags/currying/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://akhilsasidharan.in/tags/go/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://akhilsasidharan.in/tags/golang/</link>
+      <pubDate>Sat, 16 May 2020 21:23:40 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tags/golang/</guid>
       <description></description>
     </item>
     
