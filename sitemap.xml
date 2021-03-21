@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://akhilsasidharan.in/tech/golang/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
     <loc>https://akhilsasidharan.in/</loc>
     <lastmod>2021-03-13T22:06:51+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/about/</loc>
     <lastmod>2021-03-13T22:06:51+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tech/golang/interfaces/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tech/learning-golang/</loc>
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
@@ -26,6 +32,27 @@
     <loc>https://akhilsasidharan.in/tech/prefer-native-over-library/</loc>
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
+    <loc>https://akhilsasidharan.in/tags/golang/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/interfaces/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/programming/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/tdd/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tech/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
+    <loc>https://akhilsasidharan.in/tags/testing/</loc>
+    <lastmod>2021-03-21T21:44:50+05:30</lastmod>
+  </url><url>
     <loc>https://akhilsasidharan.in/categories/</loc>
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
@@ -39,12 +66,6 @@
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/programmingbasics/</loc>
-    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
-  </url><url>
-    <loc>https://akhilsasidharan.in/tags/</loc>
-    <lastmod>2021-03-13T23:23:50+05:30</lastmod>
-  </url><url>
-    <loc>https://akhilsasidharan.in/tech/</loc>
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/utilfunctions/</loc>
@@ -72,9 +93,6 @@
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/tags/go/</loc>
-    <lastmod>2021-03-13T22:57:59+05:30</lastmod>
-  </url><url>
-    <loc>https://akhilsasidharan.in/tags/golang/</loc>
     <lastmod>2021-03-13T22:57:59+05:30</lastmod>
   </url><url>
     <loc>https://akhilsasidharan.in/poems/</loc>
