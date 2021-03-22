@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Using interfaces in golang to write testable code - Akhil Sasidharan</title>
     <meta name="description" content="I like golang&rsquo;s interfaces. They&rsquo;re just a bunch of function signatures. Simple. Any user-defined type can satisfy multiple interface types at once. Which is why I could easily read a file and pass that to my function that takes an io.Reader interface. *os.File implements the Read(b []byte) (int, error).
-I am a strong advocate of Test Driven Development or TDD. What I have experienced is that the &lsquo;Eyes closed, head first, can&rsquo;t lose&rsquo; approach to writing code first and then thinking about testing it doesn&rsquo;t work.">
+ 1 2 3 4  // the io.Reader interface type Reader interface { Read(p []byte) (int, error) }">
     <link rel="canonical" href="https://akhilsasidharan.in/tech/golang/interfaces/">
     <meta property="og:title" content="Using interfaces in golang to write testable code">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://akhilsasidharan.in/tech/golang/interfaces/">
     <meta property="og:description" content="I like golang&rsquo;s interfaces. They&rsquo;re just a bunch of function signatures. Simple. Any user-defined type can satisfy multiple interface types at once. Which is why I could easily read a file and pass that to my function that takes an io.Reader interface. *os.File implements the Read(b []byte) (int, error).
-I am a strong advocate of Test Driven Development or TDD. What I have experienced is that the &lsquo;Eyes closed, head first, can&rsquo;t lose&rsquo; approach to writing code first and then thinking about testing it doesn&rsquo;t work.">
+ 1 2 3 4  // the io.Reader interface type Reader interface { Read(p []byte) (int, error) }">
     <meta property="og:site_name" content="Akhil Sasidharan">
     <link rel="stylesheet" href="https://akhilsasidharan.in/css/main.min.7caca4d6b565985cfb32758f6bbd1d6e6c00f47930950c9e43c735595928cb44.css" integrity="sha256-fKyk1rVlmFz7MnWPa70dbmwA9HkwlQyeQ8c1WVkoy0Q=">
     <meta name="generator" content="Hugo 0.81.0" />
@@ -56,7 +56,7 @@ I am a strong advocate of Test Driven Development or TDD. What I have experience
     <header class="post-header">        
         <h2 class="post-title" itemprop="name headline">Using interfaces in golang to write testable code</h2>
         <span class="post-meta">
-            <time class="date-published" datetime="2021-03-22T12:38:11&#43;07:00" itemprop="datePublished">
+            <time class="date-published" datetime="2021-03-22T18:33:57&#43;07:00" itemprop="datePublished">
                 Mon, 22 Mar 2021
             </time>
             
@@ -77,6 +77,22 @@ I am a strong advocate of Test Driven Development or TDD. What I have experience
 Any user-defined type can satisfy multiple interface types at once. Which is why
 I could easily read a file and pass that to my function that takes an io.Reader
 interface. *os.File implements the Read(b []byte) (int, error).</p>
+<p><a id="code-snippet--io.Reader"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// the io.Reader interface
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Reader</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">Read</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></p>
 <p>I am a strong advocate of Test Driven Development or TDD. What I have
 experienced is that the <a href="https://www.youtube.com/watch?v=WVIGAD5Kb70">&lsquo;Eyes closed, head first, can&rsquo;t lose&rsquo;</a> approach to
 writing code first and then thinking about testing it doesn&rsquo;t work. I end up
@@ -118,34 +134,65 @@ on integrating the APIs.</p>
 </span><span class="lnt">21
 </span><span class="lnt">22
 </span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// The interface that I defined which will take the account info and
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">pay</span>
+
+<span class="c1">// custom reader method that takes other methods
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Reader</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="c1">// add other methods you want
+</span><span class="c1"></span>	<span class="nx">io</span><span class="p">.</span><span class="nx">Reader</span>
+<span class="p">}</span>
+
+<span class="c1">// The interface that I defined which will take the account info and
 </span><span class="c1">// return the payment link.
 </span><span class="c1"></span><span class="kd">type</span> <span class="nx">Payment</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="nf">GetLink</span><span class="p">(</span><span class="nx">a</span> <span class="nx">AccountInfo</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+	<span class="nf">GetLink</span><span class="p">(</span><span class="nx">a</span> <span class="nx">Reader</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="c1">// This one will return an io.Reader implementation, io.Reader to be
-</span><span class="c1">// passed to the Post(in io.Reader) function. See the Service interface
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">RequestBuilder</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="nf">Marshal</span><span class="p">(</span><span class="nx">a</span> <span class="nx">AccountInfo</span><span class="p">)</span> <span class="p">(</span><span class="nx">io</span><span class="p">.</span><span class="nx">Reader</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">AccountInfo</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// account info goes here
+</span><span class="c1"></span><span class="p">}</span>
 
-<span class="c1">// This one will read the response from the Post(in io.Reader) and return
-</span><span class="c1">// a reference to the Link object.
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">ResponseBuilder</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="c1">// let&#39;s not get into what Response actually is
-</span><span class="c1"></span>	<span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">r</span> <span class="nx">Response</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+<span class="c1">// We define the Read method on AccountInfo so that it satisfies
+</span><span class="c1">// the io.Reader interface
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">AccountInfo</span><span class="p">)</span> <span class="nf">Read</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// marshal it and ready for transport
+</span><span class="c1"></span>	<span class="nx">bytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">err</span>
+	<span class="p">}</span>
+	<span class="c1">// io.EOF is a special error that denotes no more bytes to read
+</span><span class="c1"></span>	<span class="c1">// copy returns the number of bytes copied
+</span><span class="c1"></span>	<span class="k">return</span> <span class="nb">copy</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">),</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span>
 <span class="p">}</span>
 
 <span class="c1">// Service is nothing but a regular http method wrapper.
+</span><span class="c1">// with some custom messages to extract Link from Response.
 </span><span class="c1"></span><span class="kd">type</span> <span class="nx">Service</span> <span class="kd">interface</span> <span class="p">{</span>
-	<span class="nf">Post</span><span class="p">(</span><span class="nx">in</span> <span class="nx">io</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Response</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+	<span class="nf">Post</span><span class="p">(</span><span class="nx">in</span> <span class="nx">Reader</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Response</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+	<span class="nf">Link</span><span class="p">(</span><span class="nx">r</span> <span class="nx">Response</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></p>
+<p>Now type <strong>pay.AccountInfo</strong> implements the <strong>io.Reader</strong> interface. It is clear
+that there is no encryption involved here. For encryption I define a separate
+struct.</p>
 <p>The code that ties all things together looks like this.</p>
 <p><a id="code-snippet--Eg2"></a>
 <div class="highlight"><div class="chroma">
@@ -175,106 +222,36 @@ on integrating the APIs.</p>
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">pay</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">rqb</span> <span class="nx">RequestBuilder</span>
-	<span class="nx">rsb</span> <span class="nx">ResponseBuilder</span>
-	<span class="nx">s</span>   <span class="nx">Service</span>
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">pay</span>
+
+<span class="kd">type</span> <span class="nx">pay</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">s</span> <span class="nx">Service</span>
 <span class="p">}</span>
 
 <span class="c1">// ta-da!
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">New</span><span class="p">(</span><span class="nx">rqb</span> <span class="nx">RequestBuilder</span><span class="p">,</span> <span class="nx">rsb</span> <span class="nx">ResponseBuilder</span><span class="p">,</span> <span class="nx">svc</span> <span class="nx">Service</span><span class="p">)</span> <span class="nx">Pay</span> <span class="p">{</span>
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">New</span><span class="p">(</span><span class="nx">svc</span> <span class="nx">Service</span><span class="p">)</span> <span class="nx">Pay</span> <span class="p">{</span>
 	<span class="k">return</span> <span class="nx">pay</span><span class="p">{</span>
-		<span class="nx">rqb</span><span class="p">:</span> <span class="nx">rqb</span><span class="p">,</span>
-		<span class="nx">rsb</span><span class="p">:</span> <span class="nx">rsb</span><span class="p">,</span>
-		<span class="nx">s</span><span class="p">:</span>   <span class="nx">svc</span><span class="p">,</span>
+		<span class="c1">// this can have multiple
+</span><span class="c1"></span>		<span class="c1">// implementations depending on the
+</span><span class="c1"></span>		<span class="c1">// service API(testing and production)
+</span><span class="c1"></span>		<span class="nx">s</span><span class="p">:</span> <span class="nx">svc</span><span class="p">,</span>
 	<span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Wiring it all up.
-</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">pay</span><span class="p">)</span> <span class="nf">GetLink</span><span class="p">(</span><span class="nx">a</span> <span class="nx">AccountInfo</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c1">// we marshall the account info
-</span><span class="c1"></span>	<span class="nx">in</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">rqb</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">pay</span><span class="p">)</span> <span class="nf">GetLink</span><span class="p">(</span><span class="nx">a</span> <span class="nx">Reader</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Link</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="c1">// a satisfies the io.Reader interface
+</span><span class="c1"></span>	<span class="nx">r</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nf">Post</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
 	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 		<span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
 	<span class="p">}</span>
-	<span class="c1">// we post the data
-</span><span class="c1"></span>	<span class="nx">r</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nf">Post</span><span class="p">(</span><span class="nx">in</span><span class="p">)</span>
-	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
-	<span class="p">}</span>
-	<span class="c1">// and we unmarshal the response to return the link
-</span><span class="c1"></span>	<span class="k">return</span> <span class="nx">p</span><span class="p">.</span><span class="nx">rsb</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="o">*</span><span class="nx">r</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">p</span><span class="p">.</span><span class="nx">s</span><span class="p">.</span><span class="nf">Link</span><span class="p">(</span><span class="o">*</span><span class="nx">r</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
 </div></p>
-<p>Assuming I have a package &lsquo;paycompany&rsquo; that implements pay.RequestBuilder,
-pay.ResponseBuilder and pay.Service interaces for the company (paycompany) I am
-integrating with I can now do the following.</p>
-<p><a id="code-snippet--Eg3"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// without encryption
-</span><span class="c1"></span><span class="nx">linkSvc</span> <span class="p">=</span> <span class="nx">pay</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewRequestBuilder</span><span class="p">(),</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewResponseBuilder</span><span class="p">(),</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(),</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div></p>
-<p>or</p>
-<p><a id="code-snippet--Eg4"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">//  with encryption
-</span><span class="c1"></span><span class="nx">linkSvc</span> <span class="p">=</span> <span class="nx">pay</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewEncRequestBuilder</span><span class="p">(),</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewEncResponseBuilder</span><span class="p">(),</span>
-	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(),</span>
-<span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div></p>
-<p>and eventually just call</p>
-<p><a id="code-snippet--Eg5"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">l</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">linkSvc</span><span class="p">.</span><span class="nf">GetLink</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
-<span class="c1">// l  has the link
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>Now if I want to test the Pay interface I can do that too. I just have to mock
-the <strong>pay.Service</strong> interface (we don&rsquo;t want to call the actual service). Now I
-can test the parts and the whole.</p>
 <p>I also created an interface for encryption that can be tested
 separately. In my case I am using a public and private key based encryption.</p>
 <p><a id="code-snippet--Eg4"></a>
@@ -307,6 +284,150 @@ separately. In my case I am using a public and private key based encryption.</p>
 </code></pre></td></tr></table>
 </div>
 </div></p>
+<p>I have to use the above encrypter package (assume it is implemented) to
+encrypt the AccountInfo type so that I can use it in our production systems
+pointing to the actual service API. In my package &lsquo;paycompany&rsquo; that
+implements the <strong>pay.Service</strong> interface for the company, &lsquo;paycompany&rsquo;, I am
+integrating with I can now do the following.</p>
+<p><a id="code-snippet--Eg3"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// without encryption
+</span><span class="c1"></span><span class="kn">package</span> <span class="nx">paycompany</span>
+
+<span class="kd">func</span> <span class="nf">NewService</span><span class="p">()</span> <span class="nx">pay</span><span class="p">.</span><span class="nx">Service</span> <span class="p">{</span>
+	<span class="c1">// implement here
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// the format to send the encrypted data in
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">EncryptedData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Hash</span> <span class="kt">string</span>
+	<span class="nx">Body</span> <span class="kt">string</span>
+	<span class="nx">Key</span>  <span class="kt">string</span>
+	<span class="nx">Iv</span>   <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// inherits the AccountInfo type
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">EncAccountInfo</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">pay</span><span class="p">.</span><span class="nx">AccountInfo</span> <span class="c1">// struct embedding.
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="c1">// implements the io.Reader interface and also encrypts the bytes
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">EncAccountInfo</span><span class="p">)</span> <span class="nf">Read</span><span class="p">(</span><span class="nx">p</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">bytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">err</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">bodystring</span> <span class="p">=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span>
+	<span class="c1">// get iv somehow
+</span><span class="c1"></span>	<span class="nx">iv</span> <span class="o">:=</span> <span class="s">&#34;auniquevalue&#34;</span>
+	<span class="c1">// get the encrypter somehow
+</span><span class="c1"></span>	<span class="kd">var</span> <span class="nx">enc</span> <span class="nx">Encrypter</span> <span class="p">=</span> <span class="nx">crypt</span><span class="p">.</span><span class="nf">NewEncrypter</span><span class="p">(</span><span class="nx">iv</span><span class="p">)</span>
+	<span class="nx">ed</span> <span class="o">:=</span> <span class="nx">EncryptedData</span><span class="p">{</span>
+		<span class="nx">Hash</span><span class="p">:</span> <span class="nx">enc</span><span class="p">.</span><span class="nf">Hash</span><span class="p">(</span><span class="nx">bodystring</span><span class="p">),</span>
+		<span class="nx">Body</span><span class="p">:</span> <span class="nx">enc</span><span class="p">.</span><span class="nf">Encrypt</span><span class="p">(</span><span class="nx">bodystring</span><span class="p">),</span>
+		<span class="nx">Key</span><span class="p">:</span>  <span class="nx">enc</span><span class="p">.</span><span class="nf">Encrypt</span><span class="p">(</span><span class="nx">enc</span><span class="p">.</span><span class="nf">Key</span><span class="p">()),</span>
+		<span class="nx">Iv</span><span class="p">:</span>   <span class="nx">iv</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="nx">ebytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">ed</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">err</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">copy</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">ebytes</span><span class="p">),</span> <span class="nx">io</span><span class="p">.</span><span class="nx">EOF</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></p>
+<p>Et voilà, we have the same Read method on the same (kind of) type but now it is
+encrypted. I just overrode the Read method. To use it just create a new type from
+the original object and call the same method as shown below.</p>
+<p><a id="code-snippet--Eg5"></a>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">linkSvc</span> <span class="nx">pay</span><span class="p">.</span><span class="nx">Payment</span> <span class="p">=</span> <span class="nx">pay</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span>
+	<span class="nx">paycompany</span><span class="p">.</span><span class="nf">NewService</span><span class="p">(),</span>
+<span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">accInfo</span> <span class="nx">pay</span><span class="p">.</span><span class="nx">AccountInfo</span> <span class="c1">// once you get this somehow
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">encAccInfo</span> <span class="p">=</span> <span class="nx">paycompany</span><span class="p">.</span><span class="nx">EncAccountInfo</span><span class="p">{</span><span class="nx">accInfo</span><span class="p">}</span>
+
+<span class="c1">// calls the pay.AccountInfo.Read() method underneath
+</span><span class="c1"></span><span class="nx">l</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">linkSvc</span><span class="p">.</span><span class="nf">GetLink</span><span class="p">(</span><span class="nx">accInfo</span><span class="p">)</span>
+
+<span class="c1">// calls the paycompany.EncAccountInfo.Read() method underneath
+</span><span class="c1"></span><span class="nx">l</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">linkSvc</span><span class="p">.</span><span class="nf">GetLink</span><span class="p">(</span><span class="nx">encAccInfo</span><span class="p">)</span>
+<span class="c1">// l  has the link
+</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>If I want to test the Payment interface I can do that too. I just have to mock
+the <strong>pay.Service</strong> interface (we don&rsquo;t want to call the actual service). Now I
+can test the parts and the whole. Infact I only need to test the
+pay.Service.Link() function and my Read methods in all the types.</p>
+<p>I have left out the decryption part and assumed that the
+<strong>paycompany.NewService()</strong> can handle both the testing and production
+environments.</p>
+<p>Happy Go coding.</p>
 
     </div>
 </article>

@@ -6,15 +6,15 @@
     <description>Recent content in interfaces on Akhil Sasidharan</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Mar 2021 12:38:11 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/interfaces/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Mar 2021 18:33:57 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/tags/interfaces/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Using interfaces in golang to write testable code</title>
       <link>https://akhilsasidharan.in/tech/golang/interfaces/</link>
-      <pubDate>Mon, 22 Mar 2021 12:38:11 +0530</pubDate>
+      <pubDate>Mon, 22 Mar 2021 18:33:57 +0530</pubDate>
       
       <guid>https://akhilsasidharan.in/tech/golang/interfaces/</guid>
       <description>I like golang&amp;rsquo;s interfaces. They&amp;rsquo;re just a bunch of function signatures. Simple. Any user-defined type can satisfy multiple interface types at once. Which is why I could easily read a file and pass that to my function that takes an io.Reader interface. *os.File implements the Read(b []byte) (int, error).
-I am a strong advocate of Test Driven Development or TDD. What I have experienced is that the &amp;lsquo;Eyes closed, head first, can&amp;rsquo;t lose&amp;rsquo; approach to writing code first and then thinking about testing it doesn&amp;rsquo;t work.</description>
+ 1 2 3 4  // the io.Reader interface type Reader interface { Read(p []byte) (int, error) }</description>
     </item>
     
   </channel>
