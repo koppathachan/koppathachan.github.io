@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Poems on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/poems/</link>
     <description>Recent content in Poems on Akhil Sasidharan</description>
+    <image>
+      <url>https://akhilsasidharan.in</url>
+      <link>https://akhilsasidharan.in</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/poems/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Mar 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://akhilsasidharan.in/poems/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Spitfire</title>
       <link>https://akhilsasidharan.in/poems/spitfire/</link>
-      <pubDate>Mon, 09 Mar 2015 00:00:00 +0530</pubDate>
+      <pubDate>Mon, 09 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>https://akhilsasidharan.in/poems/spitfire/</guid>
       <description>In a land of misplaced evils

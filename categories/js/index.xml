@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>js on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/categories/js/</link>
     <description>Recent content in js on Akhil Sasidharan</description>
+    <image>
+      <url>https://akhilsasidharan.in</url>
+      <link>https://akhilsasidharan.in</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 07 Oct 2020 03:58:43 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/categories/js/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Why currying?</title>
-      <link>https://akhilsasidharan.in/tech/why-curry/</link>
-      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
+      <title>Why use native Promise over Bluebird and other implementations</title>
+      <link>https://akhilsasidharan.in/tech/prefer-native-over-library/</link>
+      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/tech/why-curry/</guid>
-      <description>Currying is the transformation of a function written like this
- 1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
-Into this
- 1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
-Which allows me to do this.
- 1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
+      <guid>https://akhilsasidharan.in/tech/prefer-native-over-library/</guid>
+      <description>&amp;lsquo;Brevity is the soul of wit&amp;rsquo;
+ We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &amp;lsquo;intelligence or humour is best expressed briefly&amp;rsquo;. I am also going to extend this quality, &amp;lsquo;soul of wit&amp;rsquo;, to programming.
+The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.</description>
+    </item>
+    
+    <item>
+      <title>Memoization, with a js implementation that caches recursive calls</title>
+      <link>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</link>
+      <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
+      
+      <guid>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</guid>
+      <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.</description>
     </item>
     
     <item>
@@ -32,23 +42,17 @@ The mathematical definition of a function is &amp;lsquo;a relationship between t
     </item>
     
     <item>
-      <title>Memoization, with a js implementation that caches recursive calls</title>
-      <link>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</link>
-      <pubDate>Sun, 20 Sep 2020 23:50:30 +0530</pubDate>
+      <title>Why currying?</title>
+      <link>https://akhilsasidharan.in/tech/why-curry/</link>
+      <pubDate>Wed, 16 Sep 2020 21:07:46 +0530</pubDate>
       
-      <guid>https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/</guid>
-      <description>Memoization is an optimization technique used in functional programming to speed up execution by storing the results of resource expensive function calls. When the function is called again with the same input the stored result is fetched and returned. This is possible in functional programming languages because of the use of pure functions as discussed in this post. Purely functional languages such as Haskell has inbuilt support for memoization. In javascript, using a mutable map (object, map, caches) we can implement a memoization.</description>
-    </item>
-    
-    <item>
-      <title>Why use native Promise over Bluebird and other implementations</title>
-      <link>https://akhilsasidharan.in/tech/prefer-native-over-library/</link>
-      <pubDate>Wed, 07 Oct 2020 03:58:43 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tech/prefer-native-over-library/</guid>
-      <description>&amp;lsquo;Brevity is the soul of wit&amp;rsquo;
- We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &amp;lsquo;intelligence or humour is best expressed briefly&amp;rsquo;. I am also going to extend this quality, &amp;lsquo;soul of wit&amp;rsquo;, to programming.
-The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.</description>
+      <guid>https://akhilsasidharan.in/tech/why-curry/</guid>
+      <description>Currying is the transformation of a function written like this
+ 1 2  const add = (a, b) =&amp;gt; a+b; add(3, 4) // = 7   
+Into this
+ 1 2  const add = a =&amp;gt; b =&amp;gt; a+b; add(3)(4) // = 7   
+Which allows me to do this.
+ 1 2 3  const add = a =&amp;gt; b =&amp;gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4</description>
     </item>
     
   </channel>

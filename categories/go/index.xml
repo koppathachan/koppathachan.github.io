@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>go on Akhil Sasidharan</title>
     <link>https://akhilsasidharan.in/categories/go/</link>
     <description>Recent content in go on Akhil Sasidharan</description>
+    <image>
+      <url>https://akhilsasidharan.in</url>
+      <link>https://akhilsasidharan.in</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Mar 2021 18:33:57 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/categories/go/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Using interfaces in golang to write testable code</title>
-      <link>https://akhilsasidharan.in/tech/golang/interfaces/</link>
-      <pubDate>Mon, 22 Mar 2021 18:33:57 +0530</pubDate>
-      
-      <guid>https://akhilsasidharan.in/tech/golang/interfaces/</guid>
-      <description>I like golang&amp;rsquo;s interfaces. They&amp;rsquo;re just a bunch of function signatures. Simple. Any user-defined type can satisfy multiple interface types at once. Which is why I could easily read a file and pass that to my function that takes an io.Reader interface. *os.File implements the Read(b []byte) (int, error).
- 1 2 3 4  // the io.Reader interface type Reader interface { Read(p []byte) (int, error) }</description>
-    </item>
-    
+    <lastBuildDate>Sat, 16 May 2020 21:23:40 +0530</lastBuildDate><atom:link href="https://akhilsasidharan.in/categories/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go. Weird And Awesome</title>
       <link>https://akhilsasidharan.in/tech/learning-golang/</link>

@@ -1,304 +1,306 @@
-<!DOCTYPE html>
-<html lang=en-us><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Go. Weird And Awesome - Akhil Sasidharan</title>
-    <meta name="description" content="November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.">
-    <link rel="canonical" href="https://akhilsasidharan.in/tech/learning-golang/">
-    <meta property="og:title" content="Go. Weird And Awesome">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://akhilsasidharan.in/tech/learning-golang/">
-    <meta property="og:description" content="November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.">
-    <meta property="og:site_name" content="Akhil Sasidharan">
-    <link rel="stylesheet" href="https://akhilsasidharan.in/css/main.min.7caca4d6b565985cfb32758f6bbd1d6e6c00f47930950c9e43c735595928cb44.css" integrity="sha256-fKyk1rVlmFz7MnWPa70dbmwA9HkwlQyeQ8c1WVkoy0Q=">
-    <meta name="generator" content="Hugo 0.80.0" />
-    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
-    
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Go. Weird And Awesome | Akhil Sasidharan</title>
+<meta name=keywords content="golang,go,programmingbasics">
+<meta name=description content="November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.">
+<meta name=author content="Akhil Sasidharan">
+<link rel=canonical href=https://akhilsasidharan.in/tech/learning-golang/>
+<link crossorigin=anonymous href=../../assets/css/stylesheet.min.6f60056d44d3f7eb69a4bc6c332b59960f3a995802bded244750232f33713c49.css integrity="sha256-b2AFbUTT9+tppLxsMytZlg86mVgCve0kR1AjLzNxPEk=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=../../assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://akhilsasidharan.in/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://akhilsasidharan.in/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://akhilsasidharan.in/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://akhilsasidharan.in/apple-touch-icon.png>
+<link rel=mask-icon href=https://akhilsasidharan.in/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.89.2">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Go. Weird And Awesome">
+<meta property="og:description" content="November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://akhilsasidharan.in/tech/learning-golang/"><meta property="og:image" content="https://akhilsasidharan.in"><meta property="article:section" content="tech">
+<meta property="article:published_time" content="2020-05-16T21:23:40+05:30">
+<meta property="article:modified_time" content="2021-11-08T22:37:40+05:30"><meta property="og:site_name" content="Akhil Sasidharan">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://akhilsasidharan.in">
+<meta name=twitter:title content="Go. Weird And Awesome">
+<meta name=twitter:description content="November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Teches","item":"https://akhilsasidharan.in/tech/"},{"@type":"ListItem","position":3,"name":"Go. Weird And Awesome","item":"https://akhilsasidharan.in/tech/learning-golang/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Go. Weird And Awesome","name":"Go. Weird And Awesome","description":"November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.","keywords":["golang","go","programmingbasics"],"articleBody":"November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially. After starting with some basic programming in Go (creating a basic http server and some middleware), the language grew on me and quickly became my favourite programming language. The designers of Go set out to create a fast, productive, and fun programming language, and that’s exactly what they did. Let’s take a brief tour through some of my learning and experiences. I have taken less time to learn Go than any other programming language. It has ~25 keywords, but it can do so much. It is garbage collected, compiled, statically typed, and has a small build time. It compiles to machine code, so it performs like C. Many languages avoid enforcing semicolons at the end of a statement. Go, following in the path of C, does enforce semicolons to terminate statements but doesn’t bother developers with it. They insert one when Go code is compiled and they have defined rules for it. You can add it yourself too, but idiomatic Go avoids it. One consequence of this decision is that braces for control structures (if, for, switch, and select) should be on the same line and not on a new line, which adds to the readability of Go. Programmers do not have to make rules instructing how and where braces are used. I remember learning to code (in C++), and missing to add break statements in my switch cases and thinking, “that’s not intuitive”. I think, as a beginner to coding, those were the most irritating logical errors I have had to debug. The fall through behavior that is common in all programming languages (except python, which does not have a switch case) is useful sometimes. However, since it is not intuitive, I guess every programmer would have made the mistake of missing that break statement. Go switch cases do not fall through unless you want to (using the “fallthrough” keyword) and I like that.\n 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  package main import ( \"fmt\" ) func main() { fmt.Print(\"Go runs on \") switch 2 { case 1: fmt.Println(\"1\") fallthrough case 2: fmt.Println(\"2\") fallthrough case 3: fmt.Println(\"3\") } }  \nGo also renames the while loop. Like the Go tour specifies “C’s while is spelled for in Go.” One less keyword to remember. Go’s concurrency model involves using Goroutines. Goroutines can be thought of as lightweight threads. They take very little stack space and the stack can grow and shrink according to program requirements. A program may just have one OS thread but a thousand Goroutines. Moreover, if one of the Goroutines is blocking, then the Go runtime moves all the other Goroutines into a newly spawned OS thread. All of this is done automatically by the Go runtime. Goroutines communicate using channels, which are special data structures. Channels can be buffered and Goroutines can push and pull data from it.\n 1 2 3 4 5 6 7 8 9 10 11 12 13  package main import \"fmt\" func main() { messages := make(chan string) go func() { messages  \"ping\" }() msg := messages fmt.Println(msg) }  \nGo is not intuitively Object Oriented. One of the main reasons for this is because it does not support inheritance. This is not by accident, but an intentional design choice. Go considers inheritance of the classical style fragile. Instead, it uses Composition. In my opinion, Go is responsibly Object Oriented. I have often noticed that, programmers write code, using languages like Java and C# where there is only one way (OO way), but still don’t achieve OO programs. With Go, you can have methods on any type, not just structures. Go interfaces are just a set of methods and you can compose an interface with multiple types that satisfy these interfaces and any other type that satisfies the whole interface.\n 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33  package main import ( \"fmt\" ) type author struct { firstName string lastName string bio string } //a method on the struct author func (a author) fullName() string { return fmt.Sprintf(\"%s %s\", a.firstName, a.lastName) } //author is embedded in struct post type post struct { title string content string author } //details is attached on post func (p post) details() { fmt.Println(\"Title: \", p.title) fmt.Println(\"Content: \", p.content) //can be accessed directly  fmt.Println(\"Author: \", p.fullName()) //can be accessed with the struct name also.  fmt.Println(\"Bio: \", p.author.bio) }  \nGo supports encapsulation at the package level. Exported methods in Go start with a capital letter, and that is one of the things that makes Go so readable. This is perhaps what I like most about Go syntax. Like other languages, we are not burdened with the decision of choosing between camel cases or pascal cases. Go makes it for us.\n 1 2 3 4 5 6 7 8 9 10 11 12 13  package math //add function is public. //access it outside the package like so: // math.Add(4,5) func Add(a int, b int) int { return a + b; } //not accessible outside the package math. func addPrint(a int, b int) { fmt.Println(Add(a,b)) }  \nAt work we decided, after much deliberation and debate, to use Go for one of our data processing microservices (Go concurrency model and performance benchmarks won the debate). We were designing a live data collection agent(for Managed Print Services) which consumed a huge amount of JSON data(about printers and their print count, cost etc.) from multiple paged REST APIs, categorised them based on various parameters, stored them and presented it. When we did some googling comparing Apache Spark and a custom solution in Go, we found that even though development effort for spark was lesser, the Go solution would perform better, was simpler and more efficient. The first thing that struck me was that Go is just a programming language(spark is a framework) and it was still easy to build data processing pipelines with just language constructs. I have come to describe OO Go as “Responsible Object Oriented Programming”, because it has truly bettered the way I write OO code. When it comes to concurrency, the amazing Goroutines has made me responsible as well as fearless in my coding. I would make Go my top choice just for its general purposiveness, small learning curve, and its refreshing take on object oriented programming.\n","wordCount":"1176","inLanguage":"en","datePublished":"2020-05-16T21:23:40+05:30","dateModified":"2021-11-08T22:37:40+05:30","author":[{"@type":"Person","name":"Akhil Sasidharan"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://akhilsasidharan.in/tech/learning-golang/"},"publisher":{"@type":"Organization","name":"Akhil Sasidharan","logo":{"@type":"ImageObject","url":"https://akhilsasidharan.in/favicon.ico"}}}</script>
 </head>
-<body><header class="site-header">
-    <nav class="site-nav" role="navigation" aria-label="breadcrumb">
-    <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb"><li class="breadcrumb-item  " 
-  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/">
-    <span itemprop="name">~</span>
-  </a>
-  <meta itemprop="position" content="1001" />
-</li>/<li class="breadcrumb-item  " 
-  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/tech/">
-    <span itemprop="name">tech</span>
-  </a>
-  <meta itemprop="position" content="0" />
-</li>/<li class="breadcrumb-item active hidden" aria-current="page"
-  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-  <a itemtype="https://schema.org/Thing" itemprop="item" href="https://akhilsasidharan.in/tech/learning-golang/">
-    <span itemprop="name">learning-golang</span>
-  </a>
-  <meta itemprop="position" content="1" />
-</li></ol>
-    </nav>
-    <h1 class="site-title hidden">
-		<a href="https://akhilsasidharan.in">Akhil Sasidharan</a>
-    </h1>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://akhilsasidharan.in accesskey=h title="Akhil Sasidharan (Alt + H)">Akhil Sasidharan</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://akhilsasidharan.in/tech/ title=Tech>
+<span>Tech</span>
+</a>
+</li>
+<li>
+<a href=https://akhilsasidharan.in/poems/ title=Poems>
+<span>Poems</span>
+</a>
+</li>
+<li>
+<a href=https://akhilsasidharan.in/categories/ title=Categories>
+<span>Categories</span>
+</a>
+</li>
+<li>
+<a href=https://akhilsasidharan.in/tags/ title=Tags>
+<span>Tags</span>
+</a>
+</li>
+<li>
+<a href=https://akhilsasidharan.in/search/ title="Search (Alt + /)" accesskey=/>
+<span>Search</span>
+</a>
+</li>
+</ul>
+</nav>
 </header>
-<main id="content">
-<article role="article" class="content post h-entry" itemscope="" itemtype="http://schema.org/BlogPosting">
-    <header class="post-header">        
-        <h2 class="post-title" itemprop="name headline">Go. Weird And Awesome</h2>
-        <span class="post-meta">
-            <time class="date-published" datetime="2020-05-16T21:23:40&#43;07:00" itemprop="datePublished">
-                Sat, 16 May 2020
-            </time>
-            
-            <ul id="tags">
-              
-                <li> <a href="https://akhilsasidharan.in/tags/golang">#golang</a> </li>
-              
-                <li> <a href="https://akhilsasidharan.in/tags/go">#go</a> </li>
-              
-                <li> <a href="https://akhilsasidharan.in/tags/programmingbasics">#programmingbasics</a> </li>
-              
-            </ul>
-            
-        </span>
-    </header>
-    <div class="post-content" itemprop="articleBody">
-        <p>November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+Go. Weird And Awesome
+</h1>
+<div class=post-meta><span title="2020-05-16 21:23:40 +0530 IST">May 16, 2020</span>&nbsp;·&nbsp;Akhil Sasidharan
+</div>
+</header>
+<div class=post-content><p>November 10th, 2019 marked the 10th anniversary of this awesome programming language called Go. The Go community in Bangalore organized a meetup (which was also their 50th meetup) hosted by SAP Labs. The meetup introduced me to gRPC and writing custom plugins for gRPC. The meetup also introduced me to how the Go runtime scheduler works and how it has achieved high performance concurrency. I was just a beginner in Go and starting to fall in love with the language, and knowing the genesis story of Go helped me understand some of the weirdness I felt about the language initially.
 After starting with some basic programming in Go (creating a basic http server and some middleware), the language grew on me and quickly became my favourite programming language. The designers of Go set out to create a fast, productive, and fun programming language, and that&rsquo;s exactly what they did. Let&rsquo;s take a brief tour through some of my learning and experiences.
 I have taken less time to learn Go than any other programming language. It has ~25 keywords, but it can do so much. It is garbage collected, compiled, statically typed, and has a small build time. It compiles to machine code, so it performs like C.
 Many languages avoid enforcing semicolons at the end of a statement. Go, following in the path of C, does enforce semicolons to terminate statements but doesn&rsquo;t bother developers with it. They insert one when Go code is compiled and they have defined rules for it. You can add it yourself too, but idiomatic Go avoids it. One consequence of this decision is that braces for control structures (if, for, switch, and select) should be on the same line and not on a new line, which adds to the readability of Go. Programmers do not have to make rules instructing how and where braces are used.
 I remember learning to code (in C++), and missing to add break statements in my switch cases and thinking, &ldquo;that&rsquo;s not intuitive&rdquo;. I think, as a beginner to coding, those were the most irritating logical errors I have had to debug. The fall through behavior that is common in all programming languages (except python, which does not have a switch case) is useful sometimes. However, since it is not intuitive, I guess every programmer would have made the mistake of missing that break statement. Go switch cases do not fall through unless you want to (using the &ldquo;fallthrough&rdquo; keyword) and I like that.</p>
-<p><a id="code-snippet--Switch"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
+<p><a id=code-snippet--Switch></a>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-   <span class="s">&#34;fmt&#34;</span>
-<span class="p">)</span>
+<span class=kn>import</span> <span class=p>(</span>
+   <span class=s>&#34;fmt&#34;</span>
+<span class=p>)</span>
 
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="nx">fmt</span><span class="p">.</span><span class="nf">Print</span><span class="p">(</span><span class="s">&#34;Go runs on &#34;</span><span class="p">)</span>
-   <span class="k">switch</span> <span class="mi">2</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;1&#34;</span><span class="p">)</span>
-	<span class="k">fallthrough</span>
-   <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;2&#34;</span><span class="p">)</span>
-	<span class="k">fallthrough</span>
-   <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;3&#34;</span><span class="p">)</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+   <span class=nx>fmt</span><span class=p>.</span><span class=nf>Print</span><span class=p>(</span><span class=s>&#34;Go runs on &#34;</span><span class=p>)</span>
+   <span class=k>switch</span> <span class=mi>2</span> <span class=p>{</span>
+   <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;1&#34;</span><span class=p>)</span>
+	<span class=k>fallthrough</span>
+   <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
+        <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;2&#34;</span><span class=p>)</span>
+	<span class=k>fallthrough</span>
+   <span class=k>case</span> <span class=mi>3</span><span class=p>:</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;3&#34;</span><span class=p>)</span>
+   <span class=p>}</span>
+<span class=p>}</span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>Go also renames the while loop. Like the Go tour specifies &ldquo;C&rsquo;s while is spelled for in Go.&rdquo; One less keyword to remember.
 Go&rsquo;s concurrency model involves using Goroutines. Goroutines can be thought of as lightweight threads. They take very little stack space and the stack can grow and shrink according to program requirements. A program may just have one OS thread but a thousand Goroutines. Moreover, if one of the Goroutines is blocking, then the Go runtime moves all the other Goroutines into a newly spawned OS thread. All of this is done automatically by the Go runtime. Goroutines communicate using channels, which are special data structures. Channels can be buffered and Goroutines can push and pull data from it.</p>
-<p><a id="code-snippet--While"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
+<p><a id=code-snippet--While></a>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
 
-<span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+<span class=kn>import</span> <span class=s>&#34;fmt&#34;</span>
 
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class=kd>func</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
 
-    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+    <span class=nx>messages</span> <span class=o>:=</span> <span class=nb>make</span><span class=p>(</span><span class=kd>chan</span> <span class=kt>string</span><span class=p>)</span>
 
-    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&#34;ping&#34;</span> <span class="p">}()</span>
+    <span class=k>go</span> <span class=kd>func</span><span class=p>()</span> <span class=p>{</span> <span class=nx>messages</span> <span class=o>&lt;-</span> <span class=s>&#34;ping&#34;</span> <span class=p>}()</span>
 
-    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
-    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+    <span class=nx>msg</span> <span class=o>:=</span> <span class=o>&lt;-</span><span class=nx>messages</span>
+    <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nx>msg</span><span class=p>)</span>
+<span class=p>}</span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>Go is not intuitively Object Oriented. One of the main reasons for this is because it does not support inheritance. This is not by accident, but an intentional design choice. Go considers inheritance of the classical style fragile. Instead, it uses Composition. In my opinion, Go is responsibly Object Oriented. I have often noticed that, programmers write code, using languages like Java and C# where there is only one way (OO way), but still don&rsquo;t achieve OO programs. With Go, you can have methods on any type, not just structures. Go interfaces are just a set of methods and you can compose an interface with multiple types that satisfy these interfaces and any other type that satisfies the whole interface.</p>
 <p><a id="code-snippet--Object Oriented"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>main</span>
 
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;fmt&#34;</span>
-<span class="p">)</span>
+<span class=kn>import</span> <span class=p>(</span>
+  <span class=s>&#34;fmt&#34;</span>
+<span class=p>)</span>
 
-<span class="kd">type</span> <span class="nx">author</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">firstName</span> <span class="kt">string</span>
-  <span class="nx">lastName</span>  <span class="kt">string</span>
-  <span class="nx">bio</span>       <span class="kt">string</span>
-<span class="p">}</span>
+<span class=kd>type</span> <span class=nx>author</span> <span class=kd>struct</span> <span class=p>{</span>
+  <span class=nx>firstName</span> <span class=kt>string</span>
+  <span class=nx>lastName</span>  <span class=kt>string</span>
+  <span class=nx>bio</span>       <span class=kt>string</span>
+<span class=p>}</span>
 
-<span class="c1">//a method on the struct author
-</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">a</span> <span class="nx">author</span><span class="p">)</span> <span class="nf">fullName</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%s %s&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">lastName</span><span class="p">)</span>
-<span class="p">}</span>
+<span class=c1>//a method on the struct author
+</span><span class=c1></span><span class=kd>func</span> <span class=p>(</span><span class=nx>a</span> <span class=nx>author</span><span class=p>)</span> <span class=nf>fullName</span><span class=p>()</span> <span class=kt>string</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=nx>fmt</span><span class=p>.</span><span class=nf>Sprintf</span><span class=p>(</span><span class=s>&#34;%s %s&#34;</span><span class=p>,</span> <span class=nx>a</span><span class=p>.</span><span class=nx>firstName</span><span class=p>,</span> <span class=nx>a</span><span class=p>.</span><span class=nx>lastName</span><span class=p>)</span>
+<span class=p>}</span>
 
-<span class="c1">//author is embedded in struct post
-</span><span class="c1"></span><span class="kd">type</span> <span class="nx">post</span> <span class="kd">struct</span> <span class="p">{</span>
-  <span class="nx">title</span>     <span class="kt">string</span>
-  <span class="nx">content</span>   <span class="kt">string</span>
-  <span class="nx">author</span>
-<span class="p">}</span>
+<span class=c1>//author is embedded in struct post
+</span><span class=c1></span><span class=kd>type</span> <span class=nx>post</span> <span class=kd>struct</span> <span class=p>{</span>
+  <span class=nx>title</span>     <span class=kt>string</span>
+  <span class=nx>content</span>   <span class=kt>string</span>
+  <span class=nx>author</span>
+<span class=p>}</span>
 
-<span class="c1">//details is attached on post
-</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">p</span> <span class="nx">post</span><span class="p">)</span> <span class="nf">details</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Title: &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Content: &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">content</span><span class="p">)</span>
-  <span class="c1">//can be accessed directly
-</span><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Author: &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nf">fullName</span><span class="p">())</span>
-  <span class="c1">//can be accessed with the struct name also.
-</span><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Bio: &#34;</span><span class="p">,</span> <span class="nx">p</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">bio</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<span class=c1>//details is attached on post
+</span><span class=c1></span><span class=kd>func</span> <span class=p>(</span><span class=nx>p</span> <span class=nx>post</span><span class=p>)</span> <span class=nf>details</span><span class=p>()</span> <span class=p>{</span>
+  <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Title: &#34;</span><span class=p>,</span> <span class=nx>p</span><span class=p>.</span><span class=nx>title</span><span class=p>)</span>
+  <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Content: &#34;</span><span class=p>,</span> <span class=nx>p</span><span class=p>.</span><span class=nx>content</span><span class=p>)</span>
+  <span class=c1>//can be accessed directly
+</span><span class=c1></span>  <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Author: &#34;</span><span class=p>,</span> <span class=nx>p</span><span class=p>.</span><span class=nf>fullName</span><span class=p>())</span>
+  <span class=c1>//can be accessed with the struct name also.
+</span><span class=c1></span>  <span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=s>&#34;Bio: &#34;</span><span class=p>,</span> <span class=nx>p</span><span class=p>.</span><span class=nx>author</span><span class=p>.</span><span class=nx>bio</span><span class=p>)</span>
+<span class=p>}</span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>Go supports encapsulation at the package level. Exported methods in Go start with a capital letter, and that is one of the things that makes Go so readable. This is perhaps what I like most about Go syntax. Like other languages, we are not burdened with the decision of choosing between camel cases or pascal cases. Go makes it for us.</p>
-<p><a id="code-snippet--Encapsulation"></a>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
+<p><a id=code-snippet--Encapsulation></a>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
 </span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">math</span>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=kn>package</span> <span class=nx>math</span>
 
-<span class="c1">//add function is public.
-</span><span class="c1">//access it outside the package like so:
-</span><span class="c1">// math.Add(4,5)
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">Add</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
+<span class=c1>//add function is public.
+</span><span class=c1>//access it outside the package like so:
+</span><span class=c1>// math.Add(4,5)
+</span><span class=c1></span><span class=kd>func</span> <span class=nf>Add</span><span class=p>(</span><span class=nx>a</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>b</span> <span class=kt>int</span><span class=p>)</span> <span class=kt>int</span> <span class=p>{</span>
+	<span class=k>return</span> <span class=nx>a</span> <span class=o>+</span> <span class=nx>b</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span class="c1">//not accessible outside the package math.
-</span><span class="c1"></span><span class="kd">func</span> <span class="nf">addPrint</span><span class="p">(</span><span class="nx">a</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">Add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">))</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<span class=c1>//not accessible outside the package math.
+</span><span class=c1></span><span class=kd>func</span> <span class=nf>addPrint</span><span class=p>(</span><span class=nx>a</span> <span class=kt>int</span><span class=p>,</span> <span class=nx>b</span> <span class=kt>int</span><span class=p>)</span> <span class=p>{</span>
+	<span class=nx>fmt</span><span class=p>.</span><span class=nf>Println</span><span class=p>(</span><span class=nf>Add</span><span class=p>(</span><span class=nx>a</span><span class=p>,</span><span class=nx>b</span><span class=p>))</span>
+<span class=p>}</span></code></pre></td></tr></table>
 </div>
 </div></p>
 <p>At work we decided, after much deliberation and debate, to use Go for one of our data processing microservices (Go concurrency model and performance benchmarks won the debate). We were designing a live data collection agent(for Managed Print Services) which consumed a huge amount of JSON data(about printers and their print count, cost etc.) from multiple paged REST APIs, categorised them based on various parameters, stored them and presented it. When we did some googling comparing Apache Spark and a custom solution in Go, we found that even though development effort for spark was lesser, the Go solution would perform better, was simpler and more efficient. The first thing that struck me was that Go is just a programming language(spark is a framework) and it was still easy to build data processing pipelines with just language constructs.
 I have come to describe OO Go as &ldquo;Responsible Object Oriented Programming&rdquo;, because it has truly bettered the way I write OO code. When it comes to concurrency, the amazing Goroutines has made me responsible as well as fearless in my coding. I would make Go my top choice just for its general purposiveness, small learning curve, and its refreshing take on object oriented programming.</p>
-
-    </div>
-</article>
-<div class="pagination">
-    
-    <div class="prev"> <a href="https://akhilsasidharan.in/tech/why-curry/">Previous Post</a> </div>
-    
-    
 </div>
-<div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "akhilsasidharan-in" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-        </main><footer class="site-footer">
-	<span class="left">Powered by <a target="_blank" href="http://gohugo.io">Hugo</a>, <a target="_blank" href="https://orgmode.org/">Emacs Org Mode</a> and org exporter <a href="https://ox-hugo.scripter.co/">ox-hugo</a> plugin.</span> 
-	<span class="right">
-		<em><a target="_blank" href="https://github.com/sasidakh">Akhil Sasidharan</a></em>
-	</span>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://akhilsasidharan.in/tags/golang/>golang</a></li>
+<li><a href=https://akhilsasidharan.in/tags/go/>go</a></li>
+<li><a href=https://akhilsasidharan.in/tags/programmingbasics/>programmingbasics</a></li>
+</ul>
 </footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://akhilsasidharan.in>Akhil Sasidharan</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
 </body>
 </html>
