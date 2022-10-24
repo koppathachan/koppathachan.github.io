@@ -3,8 +3,7 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>Why currying? | Akhil Sasidharan</title>
-<meta name=keywords content="currying,functionalprogramming,lambdacalculus,javascript,js">
+<title>Why currying? | Akhil Sasidharan</title><meta name=keywords content="currying,functionalprogramming,lambdacalculus,javascript,js">
 <meta name=description content="Currying is the transformation of a function written like this
  1 2  const add = (a, b) => a+b; add(3, 4) // = 7   
 Into this
@@ -14,7 +13,7 @@ Which allows me to do this.
 <meta name=author content="Akhil Sasidharan">
 <link rel=canonical href=https://akhilsasidharan.in/tech/why-curry/>
 <link crossorigin=anonymous href=../../assets/css/stylesheet.min.6f60056d44d3f7eb69a4bc6c332b59960f3a995802bded244750232f33713c49.css integrity="sha256-b2AFbUTT9+tppLxsMytZlg86mVgCve0kR1AjLzNxPEk=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=../../assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script defer crossorigin=anonymous src=../../assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93+QdxBJM917LmaT3s9E=" onload=hljs.initHighlightingOnLoad()></script>
 <link rel=icon href=https://akhilsasidharan.in/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://akhilsasidharan.in/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://akhilsasidharan.in/favicon-32x32.png>
@@ -22,11 +21,9 @@ Which allows me to do this.
 <link rel=mask-icon href=https://akhilsasidharan.in/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.89.2">
+<meta name=generator content="Hugo 0.93.3">
 <noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript><meta property="og:title" content="Why currying?">
+<style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:title" content="Why currying?">
 <meta property="og:description" content="Currying is the transformation of a function written like this
  1 2  const add = (a, b) => a+b; add(3, 4) // = 7   
 Into this
@@ -48,9 +45,8 @@ Which allows me to do this.
  1 2 3  const add = a => b => a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Tech","item":"https://akhilsasidharan.in/tech/"},{"@type":"ListItem","position":3,"name":"Why currying?","item":"https://akhilsasidharan.in/tech/why-curry/"}]}</script>
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why currying?","name":"Why currying?","description":"Currying is the transformation of a function written like this\n 1 2  const add = (a, b) =\u0026gt; a+b; add(3, 4) // = 7   \nInto this\n 1 2  const add = a =\u0026gt; b =\u0026gt; a+b; add(3)(4) // = 7   \nWhich allows me to do this.\n 1 2 3  const add = a =\u0026gt; b =\u0026gt; a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4","keywords":["currying","functionalprogramming","lambdacalculus","javascript","js"],"articleBody":"Currying is the transformation of a function written like this\n 1 2  const add = (a, b) = a+b; add(3, 4) // = 7   \nInto this\n 1 2  const add = a = b = a+b; add(3)(4) // = 7   \nWhich allows me to do this.\n 1 2 3  const add = a = b = a+b; const add3 = add(3); // this can be read as 3 + b;  add3(1) // = 4   \nHere I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.\nYou can compose functions like these.\n 1 2 3 4 5  const longerThan = n = word = word.length  n; const words = ['something', 'schadenfreude', 'ambivalent', 'good', 'bad', 'preposterous']; const find = words = lengthCond = words.filter(lengthCond); find(words)(longerThan(7));  \nNow that just reads ‘find words longer than seven’.\n 1 2 3 4 5 6 7  const greet = message = name = `${message}${name}!`; const sayHelloTo = greet('Hello'); sayHelloTo('Akhil'); // Hello Akhil!  const sayWelcomeTo = greet('Welcome'); sayWelcomeTo('Mamta'); // Welcome Mamta!  const sayGoodDayTo = greet('Good Day'); sayGoodDayTo('Ritika'); // Good Day Ritika!   \nIt’s easy on the eyes isn’t it.\nI especially like this:\n 1 2 3 4 5 6 7 8 9  const double = x = x * 2; const triple = x = x * 3; // This is a bit tricky to read admittedly, but look what it produces  const pipe = (...fns) = n = fns.reduce((total, f) = f(total), n); const doubler = pipe(double); // same as double  const quadrupler = pipe(double, double); const sextuple = pipe(double, triple); quadrupler(3); // 12  sextuple(5); // 30   \nThis is called composition.\nHere’s another fun one.\n 1 2 3 4  const subString = start = len = str = str.substr(start, len); const lowerCase = str = str.toLowerCase(); const firstCharacter = str = substring(0)(1)(str); const firstCharacterAsLower = str = lowerCase(firstCharacter(str));  \nIn conclusion, currying if used properly makes code really readable and can produce powerful abstractions through compositions and partial application of functions. I will explore partial application examples in my next post.\n","wordCount":"343","inLanguage":"en","datePublished":"2020-09-16T21:07:46+05:30","dateModified":"2021-11-08T23:34:18+05:30","author":[{"@type":"Person","name":"Akhil Sasidharan"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://akhilsasidharan.in/tech/why-curry/"},"publisher":{"@type":"Organization","name":"Akhil Sasidharan","logo":{"@type":"ImageObject","url":"https://akhilsasidharan.in/favicon.ico"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+</head><body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script>
 <header class=header>
 <nav class=nav>
 <div class=logo>
@@ -59,90 +55,60 @@ Which allows me to do this.
 <button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
 </span>
-</div>
-<ul id=menu>
+</div><ul id=menu>
 <li>
 <a href=https://akhilsasidharan.in/tech/ title=Tech>
 <span>Tech</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/poems/ title=Poems>
 <span>Poems</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/categories/ title=Categories>
 <span>Categories</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/tags/ title=Tags>
 <span>Tags</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/search/ title="Search (Alt + /)" accesskey=/>
 <span>Search</span>
 </a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
+</li></ul></nav></header><main class=main>
 <article class=post-single>
 <header class=post-header>
-<div class=breadcrumbs><a href=https://akhilsasidharan.in>Home</a>&nbsp;»&nbsp;<a href=https://akhilsasidharan.in/tech/>Tech</a></div>
-<h1 class=post-title>
+<div class=breadcrumbs><a href=https://akhilsasidharan.in>Home</a>&nbsp;»&nbsp;<a href=https://akhilsasidharan.in/tech/>Tech</a></div><h1 class=post-title>
 Why currying?
-</h1>
-<div class=post-meta><span title="2020-09-16 21:07:46 +0530 IST">September 16, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Akhil Sasidharan
-</div>
-</header>
-<div class=post-content><p>Currying is the transformation of a function written like this</p>
-<p><a id=code-snippet--EgCurry></a>
+</h1><div class=post-meta><span title='2020-09-16 21:07:46 +0530 IST'>September 16, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Akhil Sasidharan
+</div></header><div class=post-content><p>Currying is the transformation of a function written like this</p><p><a id=code-snippet--EgCurry></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
-  <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>)</span> <span class=c1>// = 7
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>Into this</p>
-<p><a id=code-snippet--EgCurry></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=p>(</span><span class=nx>a</span><span class=p>,</span> <span class=nx>b</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>4</span><span class=p>)</span> <span class=c1>// = 7
+</span></span></span></code></pre></td></tr></table></div></div></p><p>Into this</p><p><a id=code-snippet--EgCurry></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=nx>a</span> <span class=p>=&gt;</span> <span class=nx>b</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
-  <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>4</span><span class=p>)</span> <span class=c1>// = 7
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>Which allows me to do this.</p>
-<p><a id=code-snippet--EgCurry></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=nx>a</span> <span class=p>=&gt;</span> <span class=nx>b</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>4</span><span class=p>)</span> <span class=c1>// = 7
+</span></span></span></code></pre></td></tr></table></div></div></p><p>Which allows me to do this.</p><p><a id=code-snippet--EgCurry></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=nx>a</span> <span class=p>=&gt;</span> <span class=nx>b</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
-  <span class=kr>const</span> <span class=nx>add3</span> <span class=o>=</span> <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span> <span class=c1>// this can be read as 3 + b;
-</span><span class=c1></span>  <span class=nx>add3</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=c1>// = 4
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</p>
-<p>You can compose functions like these.</p>
-<p><a id=code-snippet--EgCurry2></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>add</span> <span class=o>=</span> <span class=nx>a</span> <span class=p>=&gt;</span> <span class=nx>b</span> <span class=p>=&gt;</span> <span class=nx>a</span><span class=o>+</span><span class=nx>b</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>add3</span> <span class=o>=</span> <span class=nx>add</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span> <span class=c1>// this can be read as 3 + b;
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nx>add3</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=c1>// = 4
+</span></span></span></code></pre></td></tr></table></div></div></p><p>Here I partially applied 3 to the function add to get add3 a specific function that adds 3 to its input.</p><p>You can compose functions like these.</p><p><a id=code-snippet--EgCurry2></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -150,17 +116,12 @@ Why currying?
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span><span class=lnt>5
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>longerThan</span> <span class=o>=</span> <span class=nx>n</span> <span class=p>=&gt;</span> <span class=nx>word</span> <span class=p>=&gt;</span> <span class=nx>word</span><span class=p>.</span><span class=nx>length</span> <span class=o>&gt;</span> <span class=nx>n</span><span class=p>;</span>
-  <span class=kr>const</span> <span class=nx>words</span> <span class=o>=</span> <span class=p>[</span><span class=s1>&#39;something&#39;</span><span class=p>,</span> <span class=s1>&#39;schadenfreude&#39;</span><span class=p>,</span> <span class=s1>&#39;ambivalent&#39;</span><span class=p>,</span>
-      <span class=s1>&#39;good&#39;</span><span class=p>,</span> <span class=s1>&#39;bad&#39;</span><span class=p>,</span> <span class=s1>&#39;preposterous&#39;</span><span class=p>];</span>
-  <span class=kr>const</span> <span class=nx>find</span> <span class=o>=</span> <span class=nx>words</span> <span class=p>=&gt;</span> <span class=nx>lengthCond</span> <span class=p>=&gt;</span> <span class=nx>words</span><span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>lengthCond</span><span class=p>);</span>
-  <span class=nx>find</span><span class=p>(</span><span class=nx>words</span><span class=p>)(</span><span class=nx>longerThan</span><span class=p>(</span><span class=mi>7</span><span class=p>));</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>Now that just reads &lsquo;find words longer than seven&rsquo;.</p>
-<p><a id=code-snippet--EgCurry2></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>longerThan</span> <span class=o>=</span> <span class=nx>n</span> <span class=p>=&gt;</span> <span class=nx>word</span> <span class=p>=&gt;</span> <span class=nx>word</span><span class=p>.</span><span class=nx>length</span> <span class=o>&gt;</span> <span class=nx>n</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>words</span> <span class=o>=</span> <span class=p>[</span><span class=s1>&#39;something&#39;</span><span class=p>,</span> <span class=s1>&#39;schadenfreude&#39;</span><span class=p>,</span> <span class=s1>&#39;ambivalent&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=s1>&#39;good&#39;</span><span class=p>,</span> <span class=s1>&#39;bad&#39;</span><span class=p>,</span> <span class=s1>&#39;preposterous&#39;</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>find</span> <span class=o>=</span> <span class=nx>words</span> <span class=p>=&gt;</span> <span class=nx>lengthCond</span> <span class=p>=&gt;</span> <span class=nx>words</span><span class=p>.</span><span class=nx>filter</span><span class=p>(</span><span class=nx>lengthCond</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>find</span><span class=p>(</span><span class=nx>words</span><span class=p>)(</span><span class=nx>longerThan</span><span class=p>(</span><span class=mi>7</span><span class=p>));</span></span></span></code></pre></td></tr></table></div></div></p><p>Now that just reads &lsquo;find words longer than seven&rsquo;.</p><p><a id=code-snippet--EgCurry2></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -170,21 +131,15 @@ Why currying?
 </span><span class=lnt>5
 </span><span class=lnt>6
 </span><span class=lnt>7
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>greet</span> <span class=o>=</span> <span class=nx>message</span> <span class=p>=&gt;</span> <span class=nx>name</span> <span class=p>=&gt;</span> <span class=sb>`</span><span class=si>${</span><span class=nx>message</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=nx>name</span><span class=si>}</span><span class=sb>!`</span><span class=p>;</span>
-  <span class=kr>const</span> <span class=nx>sayHelloTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Hello&#39;</span><span class=p>);</span>
-  <span class=nx>sayHelloTo</span><span class=p>(</span><span class=s1>&#39;Akhil&#39;</span><span class=p>);</span> <span class=c1>// Hello Akhil!
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>sayWelcomeTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Welcome&#39;</span><span class=p>);</span>
-  <span class=nx>sayWelcomeTo</span><span class=p>(</span><span class=s1>&#39;Mamta&#39;</span><span class=p>);</span> <span class=c1>// Welcome Mamta!
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>sayGoodDayTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Good Day&#39;</span><span class=p>);</span>
-  <span class=nx>sayGoodDayTo</span><span class=p>(</span><span class=s1>&#39;Ritika&#39;</span><span class=p>);</span> <span class=c1>// Good Day Ritika!
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>It&rsquo;s easy on the eyes isn&rsquo;t it.</p>
-<p>I especially like this:</p>
-<p><a id=code-snippet--EgCurry3></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>greet</span> <span class=o>=</span> <span class=nx>message</span> <span class=p>=&gt;</span> <span class=nx>name</span> <span class=p>=&gt;</span> <span class=sb>`</span><span class=si>${</span><span class=nx>message</span><span class=si>}</span><span class=sb> </span><span class=si>${</span><span class=nx>name</span><span class=si>}</span><span class=sb>!`</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>sayHelloTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Hello&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayHelloTo</span><span class=p>(</span><span class=s1>&#39;Akhil&#39;</span><span class=p>);</span> <span class=c1>// Hello Akhil!
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>sayWelcomeTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Welcome&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayWelcomeTo</span><span class=p>(</span><span class=s1>&#39;Mamta&#39;</span><span class=p>);</span> <span class=c1>// Welcome Mamta!
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>sayGoodDayTo</span> <span class=o>=</span> <span class=nx>greet</span><span class=p>(</span><span class=s1>&#39;Good Day&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sayGoodDayTo</span><span class=p>(</span><span class=s1>&#39;Ritika&#39;</span><span class=p>);</span> <span class=c1>// Good Day Ritika!
+</span></span></span></code></pre></td></tr></table></div></div></p><p>It&rsquo;s easy on the eyes isn&rsquo;t it.</p><p>I especially like this:</p><p><a id=code-snippet--EgCurry3></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -196,48 +151,30 @@ Why currying?
 </span><span class=lnt>7
 </span><span class=lnt>8
 </span><span class=lnt>9
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=kr>double</span> <span class=o>=</span> <span class=nx>x</span> <span class=p>=&gt;</span> <span class=nx>x</span> <span class=o>*</span> <span class=mi>2</span><span class=p>;</span>
-  <span class=kr>const</span> <span class=nx>triple</span> <span class=o>=</span> <span class=nx>x</span> <span class=p>=&gt;</span> <span class=nx>x</span> <span class=o>*</span> <span class=mi>3</span><span class=p>;</span>
-  <span class=c1>// This is a bit tricky to read admittedly, but look what it produces
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>pipe</span> <span class=o>=</span> <span class=p>(...</span><span class=nx>fns</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>n</span> <span class=p>=&gt;</span> <span class=nx>fns</span><span class=p>.</span><span class=nx>reduce</span><span class=p>((</span><span class=nx>total</span><span class=p>,</span> <span class=nx>f</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>f</span><span class=p>(</span><span class=nx>total</span><span class=p>),</span> <span class=nx>n</span><span class=p>);</span>
-  <span class=kr>const</span> <span class=nx>doubler</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>);</span> <span class=c1>// same as double
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>quadrupler</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>,</span> <span class=kr>double</span><span class=p>);</span>
-  <span class=kr>const</span> <span class=nx>sextuple</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>,</span> <span class=nx>triple</span><span class=p>);</span>
-  <span class=nx>quadrupler</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span> <span class=c1>// 12
-</span><span class=c1></span>  <span class=nx>sextuple</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span> <span class=c1>// 30
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>This is called composition.</p>
-<p>Here&rsquo;s another fun one.</p>
-<p><a id=code-snippet--EgCurry4></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=kr>double</span> <span class=o>=</span> <span class=nx>x</span> <span class=p>=&gt;</span> <span class=nx>x</span> <span class=o>*</span> <span class=mi>2</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>triple</span> <span class=o>=</span> <span class=nx>x</span> <span class=p>=&gt;</span> <span class=nx>x</span> <span class=o>*</span> <span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// This is a bit tricky to read admittedly, but look what it produces
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>pipe</span> <span class=o>=</span> <span class=p>(...</span><span class=nx>fns</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>n</span> <span class=p>=&gt;</span> <span class=nx>fns</span><span class=p>.</span><span class=nx>reduce</span><span class=p>((</span><span class=nx>total</span><span class=p>,</span> <span class=nx>f</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>f</span><span class=p>(</span><span class=nx>total</span><span class=p>),</span> <span class=nx>n</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>doubler</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>);</span> <span class=c1>// same as double
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>quadrupler</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>,</span> <span class=kr>double</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>sextuple</span> <span class=o>=</span> <span class=nx>pipe</span><span class=p>(</span><span class=kr>double</span><span class=p>,</span> <span class=nx>triple</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=nx>quadrupler</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span> <span class=c1>// 12
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nx>sextuple</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span> <span class=c1>// 30
+</span></span></span></code></pre></td></tr></table></div></div></p><p>This is called composition.</p><p>Here&rsquo;s another fun one.</p><p><a id=code-snippet--EgCurry4></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>subString</span> <span class=o>=</span> <span class=nx>start</span> <span class=p>=&gt;</span> <span class=nx>len</span> <span class=p>=&gt;</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>str</span><span class=p>.</span><span class=nx>substr</span><span class=p>(</span><span class=nx>start</span><span class=p>,</span> <span class=nx>len</span><span class=p>);</span>
-  <span class=kr>const</span> <span class=nx>lowerCase</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>str</span><span class=p>.</span><span class=nx>toLowerCase</span><span class=p>();</span>
-  <span class=kr>const</span> <span class=nx>firstCharacter</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>substring</span><span class=p>(</span><span class=mi>0</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=nx>str</span><span class=p>);</span>
-  <span class=kr>const</span> <span class=nx>firstCharacterAsLower</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>lowerCase</span><span class=p>(</span><span class=nx>firstCharacter</span><span class=p>(</span><span class=nx>str</span><span class=p>));</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>In conclusion, currying if used properly makes code really readable and can produce powerful abstractions through compositions and partial application of functions. I will explore partial application examples in my next post.</p>
-</div>
-<footer class=post-footer>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>subString</span> <span class=o>=</span> <span class=nx>start</span> <span class=p>=&gt;</span> <span class=nx>len</span> <span class=p>=&gt;</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>str</span><span class=p>.</span><span class=nx>substr</span><span class=p>(</span><span class=nx>start</span><span class=p>,</span> <span class=nx>len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>lowerCase</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>str</span><span class=p>.</span><span class=nx>toLowerCase</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>firstCharacter</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>substring</span><span class=p>(</span><span class=mi>0</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=nx>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>firstCharacterAsLower</span> <span class=o>=</span> <span class=nx>str</span> <span class=p>=&gt;</span> <span class=nx>lowerCase</span><span class=p>(</span><span class=nx>firstCharacter</span><span class=p>(</span><span class=nx>str</span><span class=p>));</span></span></span></code></pre></td></tr></table></div></div></p><p>In conclusion, currying if used properly makes code really readable and can produce powerful abstractions through compositions and partial application of functions. I will explore partial application examples in my next post.</p></div><footer class=post-footer>
 <ul class=post-tags>
-<li><a href=https://akhilsasidharan.in/tags/currying/>currying</a></li>
-<li><a href=https://akhilsasidharan.in/tags/functionalprogramming/>functionalprogramming</a></li>
-<li><a href=https://akhilsasidharan.in/tags/lambdacalculus/>lambdacalculus</a></li>
-<li><a href=https://akhilsasidharan.in/tags/javascript/>javascript</a></li>
-<li><a href=https://akhilsasidharan.in/tags/js/>js</a></li>
-</ul>
-<nav class=paginav>
+<li><a href=https://akhilsasidharan.in/tags/currying/>currying</a></li><li><a href=https://akhilsasidharan.in/tags/functionalprogramming/>functionalprogramming</a></li><li><a href=https://akhilsasidharan.in/tags/lambdacalculus/>lambdacalculus</a></li><li><a href=https://akhilsasidharan.in/tags/javascript/>javascript</a></li><li><a href=https://akhilsasidharan.in/tags/js/>js</a></li></ul><nav class=paginav>
 <a class=prev href=https://akhilsasidharan.in/tech/functional-programming/>
 <span class=title>« Prev Page</span>
 <br>
@@ -248,8 +185,7 @@ Why currying?
 <br>
 <span>Go. Weird And Awesome</span>
 </a>
-</nav>
-<div class=share-buttons>
+</nav><div class=share-buttons>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why currying? on twitter" href="https://twitter.com/intent/tweet/?text=Why%20currying%3f&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fwhy-curry%2f&hashtags=currying%2cfunctionalprogramming%2clambdacalculus%2cjavascript%2cjs"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
 </a>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why currying? on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fwhy-curry%2f&title=Why%20currying%3f&summary=Why%20currying%3f&source=https%3a%2f%2fakhilsasidharan.in%2ftech%2fwhy-curry%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
@@ -262,26 +198,19 @@ Why currying?
 </a>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why currying? on telegram" href="https://telegram.me/share/url?text=Why%20currying%3f&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fwhy-curry%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
 </a>
-</div>
-</footer><div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//akhilsasidharan-in.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://akhilsasidharan.in>Akhil Sasidharan</a></span>
+</div></footer><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//akhilsasidharan-in.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</article></main><footer class=footer>
+<span>&copy; 2022 <a href=https://akhilsasidharan.in>Akhil Sasidharan</a></span>
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
 </span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-</body>
-</html>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script>
+<script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="copy";function s(){t.innerText="copied!",setTimeout(()=>{t.innerText="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script>
+</body></html>

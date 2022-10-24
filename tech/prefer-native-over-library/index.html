@@ -3,15 +3,14 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>Why use native Promise over Bluebird and other implementations | Akhil Sasidharan</title>
-<meta name=keywords content="js,javascript,utilfunctions,programmingbasics">
+<title>Why use native Promise over Bluebird and other implementations | Akhil Sasidharan</title><meta name=keywords content="js,javascript,utilfunctions,programmingbasics">
 <meta name=description content="&lsquo;Brevity is the soul of wit&rsquo;
  We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &lsquo;intelligence or humour is best expressed briefly&rsquo;. I am also going to extend this quality, &lsquo;soul of wit&rsquo;, to programming.
 The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.">
 <meta name=author content="Akhil Sasidharan">
 <link rel=canonical href=https://akhilsasidharan.in/tech/prefer-native-over-library/>
 <link crossorigin=anonymous href=../../assets/css/stylesheet.min.6f60056d44d3f7eb69a4bc6c332b59960f3a995802bded244750232f33713c49.css integrity="sha256-b2AFbUTT9+tppLxsMytZlg86mVgCve0kR1AjLzNxPEk=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=../../assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<script defer crossorigin=anonymous src=../../assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93+QdxBJM917LmaT3s9E=" onload=hljs.initHighlightingOnLoad()></script>
 <link rel=icon href=https://akhilsasidharan.in/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://akhilsasidharan.in/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://akhilsasidharan.in/favicon-32x32.png>
@@ -19,11 +18,9 @@ The best thing about free and open source software is that there is a lot of goo
 <link rel=mask-icon href=https://akhilsasidharan.in/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.89.2">
+<meta name=generator content="Hugo 0.93.3">
 <noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript><meta property="og:title" content="Why use native Promise over Bluebird and other implementations">
+<style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:title" content="Why use native Promise over Bluebird and other implementations">
 <meta property="og:description" content="&lsquo;Brevity is the soul of wit&rsquo;
  We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &lsquo;intelligence or humour is best expressed briefly&rsquo;. I am also going to extend this quality, &lsquo;soul of wit&rsquo;, to programming.
 The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.">
@@ -38,10 +35,9 @@ The best thing about free and open source software is that there is a lot of goo
  We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean &lsquo;intelligence or humour is best expressed briefly&rsquo;. I am also going to extend this quality, &lsquo;soul of wit&rsquo;, to programming.
 The best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Tech","item":"https://akhilsasidharan.in/tech/"},{"@type":"ListItem","position":3,"name":"Why use native Promise over Bluebird and other implementations","item":"https://akhilsasidharan.in/tech/prefer-native-over-library/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why use native Promise over Bluebird and other implementations","name":"Why use native Promise over Bluebird and other implementations","description":"\u0026lsquo;Brevity is the soul of wit\u0026rsquo;\n We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean \u0026lsquo;intelligence or humour is best expressed briefly\u0026rsquo;. I am also going to extend this quality, \u0026lsquo;soul of wit\u0026rsquo;, to programming.\nThe best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.","keywords":["js","javascript","utilfunctions","programmingbasics"],"articleBody":" ‘Brevity is the soul of wit’\n We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean ‘intelligence or humour is best expressed briefly’. I am also going to extend this quality, ‘soul of wit’, to programming.\nThe best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything. Consider the JavaScript ecosystem. Trivial computations like calling a function multiple times or getting a value from the nested object, or delaying a function can be done by using generic implementations in ‘lodash’ package. Even implementations of native methods like forEach, map, filter, find are found (I guess lodash was pre es3) in lodash. Coming back to brevity and the soul of wit, I could not bring myself to include another library for such trivial things. I prefer custom specific implementations to generic solution especially for such trivial things. For instance, consider the lodash method isEmpty(value). lodash.isEmpty(value) looks for all falsey values. Why must it.\n 1  const isEmpty = arr = arr.length === 0 || Object.keys(arr).length === 0;  \nIn most cases its input will be an object or an array. That’s readable and brief. Why must a function that checks if an object is empty, recieve say, a number. It is a violation of the Liskov Substitution Principle aka LSP.\nAnother common use case is for Promise. Promises were introduced in es6 (ES2015). Before that other libraries like Bluebird were used. Bluebird even performed better than native Promises (before node 10). However, Bluebird also has other functions like Promise.map, which can be easily implemented using array.map and async/await. Promise.map also has options like concurrency. But I cannot see the rationale behind importing a library to use a couple of its features as opposed spending 15 minutes to implement them yourself. Here is where that soul of wit is and this habit has made me a better programmer. A generic solution is not always the best approach and in those instances I prefer a custom solution.\nNonetheless, I was interested in a generic solution for Promise.map using modern javscript. Here’s what I came up with.\n 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  // partition the data into groups of length given by concurrency.  const partition = (data, concurrency) = Array.from({ length: Math.ceil(data.length / concurrency) }, (_, i) = data.slice(i * concurrency, (i + 1) * concurrency)); // custom mapReduce takes a mapper function  // that should be partially applied to return the reduce method.  const mapReduce = (mapper) = async ( result, data ) = [...await result, ...await Promise.all(data.map(mapper))]; const map = ( concurrency = Infinity ) = async ( data, mapper ) = partition(data, concurrency).reduce(mapReduce(mapper), []);  \nThe above code is simple, follows functional programming paradigm using modern javascript.\nAnother irritating example is that of the lodash get method. It allows us to do this:\n 1 2 3 4  const object = { 'a': [{ 'b': { 'c': 3 } }] }; get(object, 'a[0].b.c'); // 3  // and you can pass a default value if the path is not found.  get(object, 'a.b.c', 'default'); // 'default'   \nIn the off chance that I have to use this function, I prefer this.\n 1 2 3 4 5 6 7 8 9 10 11  const makeGet = (def) = ( obj, ...ks ) = ks.slice(1).reduce(( o, k, _, kss ) = (typeof o === 'object' \u0026\u0026 o[k]) || (kss.splice(1) \u0026\u0026 def), obj[ks[0]]); const get = makeGet('default'); get(object, 'a', 0, 'b', 'c'); // 3  get(object, 'a', 0, 'b', 'a'); // 'default'   \nIt doesn’t take much effort to parse ‘a[0].b.c’ into the arguments of this function.\nIt is always more rewarding to take some time out and implement such trivial functions. I’ve learnt a few things from that and it has defintely made me a better programmer.\n","wordCount":"665","inLanguage":"en","datePublished":"2020-10-07T03:58:43+05:30","dateModified":"2021-11-08T23:34:20+05:30","author":[{"@type":"Person","name":"Akhil Sasidharan"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://akhilsasidharan.in/tech/prefer-native-over-library/"},"publisher":{"@type":"Organization","name":"Akhil Sasidharan","logo":{"@type":"ImageObject","url":"https://akhilsasidharan.in/favicon.ico"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why use native Promise over Bluebird and other implementations","name":"Why use native Promise over Bluebird and other implementations","description":"\u0026lsquo;Brevity is the soul of wit\u0026rsquo;\n We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean \u0026lsquo;intelligence or humour is best expressed briefly\u0026rsquo;. I am also going to extend this quality, \u0026lsquo;soul of wit\u0026rsquo;, to programming.\nThe best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything.","keywords":["js","javascript","utilfunctions","programmingbasics"],"articleBody":" ‘Brevity is the soul of wit’\n We owe shakespeare the credit for this enduring idiom. The context of this quote is often lost in its contemporary usage. I am going to ignore it too, and use it to simply mean ‘intelligence or humour is best expressed briefly’. I am also going to extend this quality, ‘soul of wit’, to programming.\nThe best thing about free and open source software is that there is a lot of good, clean useful software to choose from to do anything. Consider the JavaScript ecosystem. Trivial computations like calling a function multiple times or getting a value from the nested object, or delaying a function can be done by using generic implementations in ’lodash’ package. Even implementations of native methods like forEach, map, filter, find are found (I guess lodash was pre es3) in lodash. Coming back to brevity and the soul of wit, I could not bring myself to include another library for such trivial things. I prefer custom specific implementations to generic solution especially for such trivial things. For instance, consider the lodash method isEmpty(value). lodash.isEmpty(value) looks for all falsey values. Why must it.\n 1  const isEmpty = arr = arr.length === 0 || Object.keys(arr).length === 0;  \nIn most cases its input will be an object or an array. That’s readable and brief. Why must a function that checks if an object is empty, recieve say, a number. It is a violation of the Liskov Substitution Principle aka LSP.\nAnother common use case is for Promise. Promises were introduced in es6 (ES2015). Before that other libraries like Bluebird were used. Bluebird even performed better than native Promises (before node 10). However, Bluebird also has other functions like Promise.map, which can be easily implemented using array.map and async/await. Promise.map also has options like concurrency. But I cannot see the rationale behind importing a library to use a couple of its features as opposed spending 15 minutes to implement them yourself. Here is where that soul of wit is and this habit has made me a better programmer. A generic solution is not always the best approach and in those instances I prefer a custom solution.\nNonetheless, I was interested in a generic solution for Promise.map using modern javscript. Here’s what I came up with.\n 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  // partition the data into groups of length given by concurrency.  const partition = (data, concurrency) = Array.from({ length: Math.ceil(data.length / concurrency) }, (_, i) = data.slice(i * concurrency, (i + 1) * concurrency)); // custom mapReduce takes a mapper function  // that should be partially applied to return the reduce method.  const mapReduce = (mapper) = async ( result, data ) = [...await result, ...await Promise.all(data.map(mapper))]; const map = ( concurrency = Infinity ) = async ( data, mapper ) = partition(data, concurrency).reduce(mapReduce(mapper), []);  \nThe above code is simple, follows functional programming paradigm using modern javascript.\nAnother irritating example is that of the lodash get method. It allows us to do this:\n 1 2 3 4  const object = { 'a': [{ 'b': { 'c': 3 } }] }; get(object, 'a[0].b.c'); // 3  // and you can pass a default value if the path is not found.  get(object, 'a.b.c', 'default'); // 'default'   \nIn the off chance that I have to use this function, I prefer this.\n 1 2 3 4 5 6 7 8 9 10 11  const makeGet = (def) = ( obj, ...ks ) = ks.slice(1).reduce(( o, k, _, kss ) = (typeof o === 'object' \u0026\u0026 o[k]) || (kss.splice(1) \u0026\u0026 def), obj[ks[0]]); const get = makeGet('default'); get(object, 'a', 0, 'b', 'c'); // 3  get(object, 'a', 0, 'b', 'a'); // 'default'   \nIt doesn’t take much effort to parse ‘a[0].b.c’ into the arguments of this function.\nIt is always more rewarding to take some time out and implement such trivial functions. I’ve learnt a few things from that and it has defintely made me a better programmer.\n","wordCount":"665","inLanguage":"en","datePublished":"2020-10-07T03:58:43+05:30","dateModified":"2021-11-08T23:34:20+05:30","author":[{"@type":"Person","name":"Akhil Sasidharan"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://akhilsasidharan.in/tech/prefer-native-over-library/"},"publisher":{"@type":"Organization","name":"Akhil Sasidharan","logo":{"@type":"ImageObject","url":"https://akhilsasidharan.in/favicon.ico"}}}</script>
+</head><body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script>
 <header class=header>
 <nav class=nav>
 <div class=logo>
@@ -50,81 +46,59 @@ The best thing about free and open source software is that there is a lot of goo
 <button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
 </span>
-</div>
-<ul id=menu>
+</div><ul id=menu>
 <li>
 <a href=https://akhilsasidharan.in/tech/ title=Tech>
 <span>Tech</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/poems/ title=Poems>
 <span>Poems</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/categories/ title=Categories>
 <span>Categories</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/tags/ title=Tags>
 <span>Tags</span>
 </a>
-</li>
-<li>
+</li><li>
 <a href=https://akhilsasidharan.in/search/ title="Search (Alt + /)" accesskey=/>
 <span>Search</span>
 </a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
+</li></ul></nav></header><main class=main>
 <article class=post-single>
 <header class=post-header>
-<div class=breadcrumbs><a href=https://akhilsasidharan.in>Home</a>&nbsp;»&nbsp;<a href=https://akhilsasidharan.in/tech/>Tech</a></div>
-<h1 class=post-title>
+<div class=breadcrumbs><a href=https://akhilsasidharan.in>Home</a>&nbsp;»&nbsp;<a href=https://akhilsasidharan.in/tech/>Tech</a></div><h1 class=post-title>
 Why use native Promise over Bluebird and other implementations
-</h1>
-<div class=post-meta><span title="2020-10-07 03:58:43 +0530 IST">October 7, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Akhil Sasidharan
-</div>
-</header>
-<div class=post-content><blockquote>
-<p>&lsquo;Brevity is the soul of wit&rsquo;</p>
-</blockquote>
-<p>We owe shakespeare the credit for this enduring idiom. The context of
+</h1><div class=post-meta><span title='2020-10-07 03:58:43 +0530 IST'>October 7, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Akhil Sasidharan
+</div></header><div class=post-content><blockquote>
+<p>&lsquo;Brevity is the soul of wit&rsquo;</p></blockquote><p>We owe shakespeare the credit for this enduring idiom. The context of
 this quote is often lost in its contemporary usage. I am going to
 ignore it too, and use it to simply mean &lsquo;intelligence or humour is best
 expressed briefly&rsquo;. I am also going to extend this quality, &lsquo;soul of wit&rsquo;,
-to programming.</p>
-<p>The best thing about free and open source software is that there is a
+to programming.</p><p>The best thing about free and open source software is that there is a
 lot of good, clean useful software to choose from to do anything.
 Consider the JavaScript ecosystem. Trivial computations like calling a
 function multiple times or getting a value from the nested object, or
 delaying a function can be done by using generic implementations in
-&lsquo;lodash&rsquo; package. Even implementations of native methods like forEach,
+&rsquo;lodash&rsquo; package. Even implementations of native methods like forEach,
 map, filter, find are found (I guess lodash was pre es3) in
 lodash. Coming back to brevity and the soul of wit, I could not bring
 myself to include another library for such trivial things. I prefer
 custom specific implementations to generic solution especially for
 such trivial things. For instance, consider the lodash method
 isEmpty(value). lodash.isEmpty(value) looks for all falsey values. Why
-must it.</p>
-<p><a id=code-snippet--Eg1></a>
+must it.</p><p><a id=code-snippet--Eg1></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>isEmpty</span> <span class=o>=</span> <span class=nx>arr</span> <span class=p>=&gt;</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span> <span class=o>===</span> <span class=mi>0</span> <span class=o>||</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>keys</span><span class=p>(</span><span class=nx>arr</span><span class=p>).</span><span class=nx>length</span> <span class=o>===</span> <span class=mi>0</span><span class=p>;</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>In most cases its input will be an object or an array. That&rsquo;s readable
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>isEmpty</span> <span class=o>=</span> <span class=nx>arr</span> <span class=p>=&gt;</span> <span class=nx>arr</span><span class=p>.</span><span class=nx>length</span> <span class=o>===</span> <span class=mi>0</span> <span class=o>||</span> <span class=nb>Object</span><span class=p>.</span><span class=nx>keys</span><span class=p>(</span><span class=nx>arr</span><span class=p>).</span><span class=nx>length</span> <span class=o>===</span> <span class=mi>0</span><span class=p>;</span></span></span></code></pre></td></tr></table></div></div></p><p>In most cases its input will be an object or an array. That&rsquo;s readable
 and brief. Why must a function that checks if an object is empty,
 recieve say, a number. <strong>It is a violation of the Liskov Substitution
-Principle aka LSP</strong>.</p>
-<p>Another common use case is for Promise. Promises were introduced in
+Principle aka LSP</strong>.</p><p>Another common use case is for Promise. Promises were introduced in
 es6 (ES2015). Before that other libraries like Bluebird were
 used. Bluebird even performed better than native Promises (before node
 10). However, Bluebird also has other functions like Promise.map,
@@ -134,10 +108,8 @@ cannot see the rationale behind importing a library to use a couple of
 its features as opposed spending 15 minutes to implement them
 yourself. Here is where that soul of wit is and this habit has made me
 a better programmer. A generic solution is not always the best
-approach and in those instances I prefer a custom solution.</p>
-<p>Nonetheless, I was interested in a generic solution for Promise.map
-using modern javscript. Here&rsquo;s what I came up with.</p>
-<p><a id=code-snippet--Eg2></a>
+approach and in those instances I prefer a custom solution.</p><p>Nonetheless, I was interested in a generic solution for Promise.map
+using modern javscript. Here&rsquo;s what I came up with.</p><p><a id=code-snippet--Eg2></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -156,48 +128,37 @@ using modern javscript. Here&rsquo;s what I came up with.</p>
 </span><span class=lnt>14
 </span><span class=lnt>15
 </span><span class=lnt>16
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=c1>// partition the data into groups of length given by concurrency.
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>partition</span> <span class=o>=</span> <span class=p>(</span><span class=nx>data</span><span class=p>,</span> <span class=nx>concurrency</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>from</span><span class=p>({</span>
-    <span class=nx>length</span><span class=o>:</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>ceil</span><span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>length</span> <span class=o>/</span> <span class=nx>concurrency</span><span class=p>)</span>
-  <span class=p>},</span> <span class=p>(</span><span class=nx>_</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>data</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=nx>i</span> <span class=o>*</span> <span class=nx>concurrency</span><span class=p>,</span> <span class=p>(</span><span class=nx>i</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>*</span> <span class=nx>concurrency</span><span class=p>));</span>
-
-  <span class=c1>// custom mapReduce takes a mapper function
-</span><span class=c1></span>  <span class=c1>// that should be partially applied to return the reduce method.
-</span><span class=c1></span>  <span class=kr>const</span> <span class=nx>mapReduce</span> <span class=o>=</span> <span class=p>(</span><span class=nx>mapper</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=kr>async</span> <span class=p>(</span>
-    <span class=nx>result</span><span class=p>,</span> <span class=nx>data</span>
-  <span class=p>)</span> <span class=p>=&gt;</span> <span class=p>[...</span><span class=kr>await</span> <span class=nx>result</span><span class=p>,</span> <span class=p>...</span><span class=kr>await</span> <span class=nb>Promise</span><span class=p>.</span><span class=nx>all</span><span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=nx>mapper</span><span class=p>))];</span>
-
-  <span class=kr>const</span> <span class=nx>map</span> <span class=o>=</span> <span class=p>(</span>
-    <span class=nx>concurrency</span> <span class=o>=</span> <span class=kc>Infinity</span>
-  <span class=p>)</span> <span class=p>=&gt;</span> <span class=kr>async</span> <span class=p>(</span>
-    <span class=nx>data</span><span class=p>,</span> <span class=nx>mapper</span>
-  <span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>partition</span><span class=p>(</span><span class=nx>data</span><span class=p>,</span> <span class=nx>concurrency</span><span class=p>).</span><span class=nx>reduce</span><span class=p>(</span><span class=nx>mapReduce</span><span class=p>(</span><span class=nx>mapper</span><span class=p>),</span> <span class=p>[]);</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>The above code is simple, follows functional programming paradigm
-using modern javascript.</p>
-<p>Another irritating example is that of the lodash get method. It allows
-us to do this:</p>
-<p><a id=code-snippet--Eg3></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=c1>// partition the data into groups of length given by concurrency.
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>partition</span> <span class=o>=</span> <span class=p>(</span><span class=nx>data</span><span class=p>,</span> <span class=nx>concurrency</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>from</span><span class=p>({</span>
+</span></span><span class=line><span class=cl>    <span class=nx>length</span><span class=o>:</span> <span class=nb>Math</span><span class=p>.</span><span class=nx>ceil</span><span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>length</span> <span class=o>/</span> <span class=nx>concurrency</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span> <span class=p>(</span><span class=nx>_</span><span class=p>,</span> <span class=nx>i</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>data</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=nx>i</span> <span class=o>*</span> <span class=nx>concurrency</span><span class=p>,</span> <span class=p>(</span><span class=nx>i</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>*</span> <span class=nx>concurrency</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c1>// custom mapReduce takes a mapper function
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=c1>// that should be partially applied to return the reduce method.
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=kr>const</span> <span class=nx>mapReduce</span> <span class=o>=</span> <span class=p>(</span><span class=nx>mapper</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=kr>async</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>result</span><span class=p>,</span> <span class=nx>data</span>
+</span></span><span class=line><span class=cl>  <span class=p>)</span> <span class=p>=&gt;</span> <span class=p>[...</span><span class=kr>await</span> <span class=nx>result</span><span class=p>,</span> <span class=p>...</span><span class=kr>await</span> <span class=nb>Promise</span><span class=p>.</span><span class=nx>all</span><span class=p>(</span><span class=nx>data</span><span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=nx>mapper</span><span class=p>))];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>map</span> <span class=o>=</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>concurrency</span> <span class=o>=</span> <span class=kc>Infinity</span>
+</span></span><span class=line><span class=cl>  <span class=p>)</span> <span class=p>=&gt;</span> <span class=kr>async</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>data</span><span class=p>,</span> <span class=nx>mapper</span>
+</span></span><span class=line><span class=cl>  <span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>partition</span><span class=p>(</span><span class=nx>data</span><span class=p>,</span> <span class=nx>concurrency</span><span class=p>).</span><span class=nx>reduce</span><span class=p>(</span><span class=nx>mapReduce</span><span class=p>(</span><span class=nx>mapper</span><span class=p>),</span> <span class=p>[]);</span></span></span></code></pre></td></tr></table></div></div></p><p>The above code is simple, follows functional programming paradigm
+using modern javascript.</p><p>Another irritating example is that of the lodash get method. It allows
+us to do this:</p><p><a id=code-snippet--Eg3></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>object</span> <span class=o>=</span> <span class=p>{</span> <span class=s1>&#39;a&#39;</span><span class=o>:</span> <span class=p>[{</span> <span class=s1>&#39;b&#39;</span><span class=o>:</span> <span class=p>{</span> <span class=s1>&#39;c&#39;</span><span class=o>:</span> <span class=mi>3</span> <span class=p>}</span> <span class=p>}]</span> <span class=p>};</span>
-  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a[0].b.c&#39;</span><span class=p>);</span> <span class=c1>// 3
-</span><span class=c1></span>  <span class=c1>// and you can pass a default value if the path is not found.
-</span><span class=c1></span>  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a.b.c&#39;</span><span class=p>,</span> <span class=s1>&#39;default&#39;</span><span class=p>);</span> <span class=c1>// &#39;default&#39;
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>In the off chance that I have to use this function, I prefer this.</p>
-<p><a id=code-snippet--Eg3></a>
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>object</span> <span class=o>=</span> <span class=p>{</span> <span class=s1>&#39;a&#39;</span><span class=o>:</span> <span class=p>[{</span> <span class=s1>&#39;b&#39;</span><span class=o>:</span> <span class=p>{</span> <span class=s1>&#39;c&#39;</span><span class=o>:</span> <span class=mi>3</span> <span class=p>}</span> <span class=p>}]</span> <span class=p>};</span>
+</span></span><span class=line><span class=cl>  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a[0].b.c&#39;</span><span class=p>);</span> <span class=c1>// 3
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=c1>// and you can pass a default value if the path is not found.
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a.b.c&#39;</span><span class=p>,</span> <span class=s1>&#39;default&#39;</span><span class=p>);</span> <span class=c1>// &#39;default&#39;
+</span></span></span></code></pre></td></tr></table></div></div></p><p>In the off chance that I have to use this function, I prefer this.</p><p><a id=code-snippet--Eg3></a>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -211,43 +172,30 @@ us to do this:</p>
 </span><span class=lnt> 9
 </span><span class=lnt>10
 </span><span class=lnt>11
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-js data-lang=js>  <span class=kr>const</span> <span class=nx>makeGet</span> <span class=o>=</span> <span class=p>(</span><span class=nx>def</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>(</span>
-    <span class=nx>obj</span><span class=p>,</span> <span class=p>...</span><span class=nx>ks</span>
-  <span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>ks</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>1</span><span class=p>).</span><span class=nx>reduce</span><span class=p>((</span>
-    <span class=nx>o</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>_</span><span class=p>,</span> <span class=nx>kss</span>
-  <span class=p>)</span> <span class=p>=&gt;</span> <span class=p>(</span><span class=k>typeof</span> <span class=nx>o</span> <span class=o>===</span> <span class=s1>&#39;object&#39;</span> <span class=o>&amp;&amp;</span> <span class=nx>o</span><span class=p>[</span><span class=nx>k</span><span class=p>])</span> <span class=o>||</span> <span class=p>(</span><span class=nx>kss</span><span class=p>.</span><span class=nx>splice</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=nx>def</span><span class=p>),</span> <span class=nx>obj</span><span class=p>[</span><span class=nx>ks</span><span class=p>[</span><span class=mi>0</span><span class=p>]]);</span>
-
-  <span class=kr>const</span> <span class=nx>get</span> <span class=o>=</span> <span class=nx>makeGet</span><span class=p>(</span><span class=s1>&#39;default&#39;</span><span class=p>);</span>
-
-  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=s1>&#39;c&#39;</span><span class=p>);</span> <span class=c1>// 3
-</span><span class=c1></span>
-  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>);</span> <span class=c1>// &#39;default&#39;
-</span></code></pre></td></tr></table>
-</div>
-</div></p>
-<p>It doesn&rsquo;t take much effort to parse &lsquo;a[0].b.c&rsquo; into the arguments of
-this function.</p>
-<p>It is always more rewarding to take some time out and implement such
+</span></code></pre></td><td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>makeGet</span> <span class=o>=</span> <span class=p>(</span><span class=nx>def</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>obj</span><span class=p>,</span> <span class=p>...</span><span class=nx>ks</span>
+</span></span><span class=line><span class=cl>  <span class=p>)</span> <span class=p>=&gt;</span> <span class=nx>ks</span><span class=p>.</span><span class=nx>slice</span><span class=p>(</span><span class=mi>1</span><span class=p>).</span><span class=nx>reduce</span><span class=p>((</span>
+</span></span><span class=line><span class=cl>    <span class=nx>o</span><span class=p>,</span> <span class=nx>k</span><span class=p>,</span> <span class=nx>_</span><span class=p>,</span> <span class=nx>kss</span>
+</span></span><span class=line><span class=cl>  <span class=p>)</span> <span class=p>=&gt;</span> <span class=p>(</span><span class=k>typeof</span> <span class=nx>o</span> <span class=o>===</span> <span class=s1>&#39;object&#39;</span> <span class=o>&amp;&amp;</span> <span class=nx>o</span><span class=p>[</span><span class=nx>k</span><span class=p>])</span> <span class=o>||</span> <span class=p>(</span><span class=nx>kss</span><span class=p>.</span><span class=nx>splice</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=o>&amp;&amp;</span> <span class=nx>def</span><span class=p>),</span> <span class=nx>obj</span><span class=p>[</span><span class=nx>ks</span><span class=p>[</span><span class=mi>0</span><span class=p>]]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>get</span> <span class=o>=</span> <span class=nx>makeGet</span><span class=p>(</span><span class=s1>&#39;default&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=s1>&#39;c&#39;</span><span class=p>);</span> <span class=c1>// 3
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>  <span class=nx>get</span><span class=p>(</span><span class=nx>object</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>);</span> <span class=c1>// &#39;default&#39;
+</span></span></span></code></pre></td></tr></table></div></div></p><p>It doesn&rsquo;t take much effort to parse &lsquo;a[0].b.c&rsquo; into the arguments of
+this function.</p><p>It is always more rewarding to take some time out and implement such
 trivial functions. I&rsquo;ve learnt a few things from that and it has
-defintely made me a better programmer.</p>
-</div>
-<footer class=post-footer>
+defintely made me a better programmer.</p></div><footer class=post-footer>
 <ul class=post-tags>
-<li><a href=https://akhilsasidharan.in/tags/js/>js</a></li>
-<li><a href=https://akhilsasidharan.in/tags/javascript/>javascript</a></li>
-<li><a href=https://akhilsasidharan.in/tags/utilfunctions/>utilfunctions</a></li>
-<li><a href=https://akhilsasidharan.in/tags/programmingbasics/>programmingbasics</a></li>
-</ul>
-<nav class=paginav>
+<li><a href=https://akhilsasidharan.in/tags/js/>js</a></li><li><a href=https://akhilsasidharan.in/tags/javascript/>javascript</a></li><li><a href=https://akhilsasidharan.in/tags/utilfunctions/>utilfunctions</a></li><li><a href=https://akhilsasidharan.in/tags/programmingbasics/>programmingbasics</a></li></ul><nav class=paginav>
 <a class=next href=https://akhilsasidharan.in/tech/fast-recursion-using-memoizer/>
 <span class=title>Next Page »</span>
 <br>
 <span>Memoization, with a js implementation that caches recursive calls</span>
 </a>
-</nav>
-<div class=share-buttons>
+</nav><div class=share-buttons>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why use native Promise over Bluebird and other implementations on twitter" href="https://twitter.com/intent/tweet/?text=Why%20use%20native%20Promise%20over%20Bluebird%20and%20other%20implementations&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fprefer-native-over-library%2f&hashtags=js%2cjavascript%2cutilfunctions%2cprogrammingbasics"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
 </a>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why use native Promise over Bluebird and other implementations on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fprefer-native-over-library%2f&title=Why%20use%20native%20Promise%20over%20Bluebird%20and%20other%20implementations&summary=Why%20use%20native%20Promise%20over%20Bluebird%20and%20other%20implementations&source=https%3a%2f%2fakhilsasidharan.in%2ftech%2fprefer-native-over-library%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
@@ -260,26 +208,19 @@ defintely made me a better programmer.</p>
 </a>
 <a target=_blank rel="noopener noreferrer" aria-label="share Why use native Promise over Bluebird and other implementations on telegram" href="https://telegram.me/share/url?text=Why%20use%20native%20Promise%20over%20Bluebird%20and%20other%20implementations&url=https%3a%2f%2fakhilsasidharan.in%2ftech%2fprefer-native-over-library%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
 </a>
-</div>
-</footer><div id=disqus_thread></div>
-<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//akhilsasidharan-in.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
-<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
-<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://akhilsasidharan.in>Akhil Sasidharan</a></span>
+</div></footer><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//akhilsasidharan-in.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</article></main><footer class=footer>
+<span>&copy; 2022 <a href=https://akhilsasidharan.in>Akhil Sasidharan</a></span>
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
 </span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-</body>
-</html>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script>
+<script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="copy";function s(){t.innerText="copied!",setTimeout(()=>{t.innerText="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script>
+</body></html>
